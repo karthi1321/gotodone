@@ -48,11 +48,6 @@ class _TodoListPageState extends State<TodoListPage> {
     });
   }
 
-  // Save tasks to the TaskManager (you can implement as needed)
-  Future<void> _saveTasks() async {
-    await TaskManager.saveTasks();
-  }
-
   // Add a new task
   void _addTask(String title, bool isFav) {
     if (title.isNotEmpty) {
@@ -182,6 +177,30 @@ class _TodoListPageState extends State<TodoListPage> {
     );
   }
 
+  // Show all tasks option
+  void _showAllTasks() {
+    setState(() {
+      selectedLabel = "All";  // Reset the label to "All"
+      _loadTasks();  // Reload tasks with no label filter
+    });
+    _saveSelectedLabel("All");  // Save the label as "All"
+  }
+
+  // Option for the 3-dot menu
+  void _onMenuOptionSelected(String value) {
+    switch (value) {
+      case 'View Complete Task':
+        _showAllTasks(); // Show all tasks
+        break;
+      case 'Search':
+        // Implement search functionality (e.g., navigate to a search page)
+        break;
+      case 'New List':
+        // Implement new list functionality
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -211,6 +230,23 @@ class _TodoListPageState extends State<TodoListPage> {
               ),
             ),
           ),
+          PopupMenuButton<String>(
+            onSelected: _onMenuOptionSelected,
+            itemBuilder: (context) => [
+              PopupMenuItem<String>(
+                value: 'View Complete Task',
+                child: Text('View Complete Task'),
+              ),
+              PopupMenuItem<String>(
+                value: 'New List',
+                child: Text('New List'),
+              ),
+              PopupMenuItem<String>(
+                value: 'Search',
+                child: Text('Search'),
+              ),
+            ],
+          ),
         ],
       ),
       body: _tasks.isEmpty
@@ -228,18 +264,6 @@ class _TodoListPageState extends State<TodoListPage> {
                itemCount: _tasks.length,
               itemBuilder: (context, index) {
                 return Container(
-                   // decoration: BoxDecoration(
-                  //   color: Colors.white,
-                  //   borderRadius: BorderRadius.circular(12.0),
-                  //   boxShadow: [
-                  //     BoxShadow(
-                  //       color: Colors.grey.withOpacity(0.2),
-                  //       spreadRadius: 1,
-                  //       blurRadius: 8,
-                  //       offset: Offset(0, 4), // Position of the shadow
-                  //     ),
-                  //   ],
-                  // ),
                   child: TaskCard(
                     task: _tasks[index],
                     onComplete: () => _markTaskCompleted(index),
