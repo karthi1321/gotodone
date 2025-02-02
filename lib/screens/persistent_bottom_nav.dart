@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gotodone/constants/app_constants.dart';
- import 'package:gotodone/screens/TextSpeechSettings.dart';
+import 'package:gotodone/screens/TaskSearchDelegate.dart';
+import 'package:gotodone/screens/TextSpeechSettings.dart';
 import 'package:gotodone/screens/commands_list_page.dart';
 import 'package:gotodone/screens/explain_page.dart';
 import 'package:gotodone/screens/explore_page.dart';
@@ -22,15 +23,15 @@ class _PersistentBottomNavState extends State<PersistentBottomNav> {
 
   final List<Widget> _pages = [
     LandingPage(),
-    ExplorePage(),
+    TodoListPage(),
     //  Center(child: Text('Notifications Page')), // Placeholder for notifications
     // Center(child: Text('Profile Page')),       // Placeholder for profile
-    CommandsListPage( groupKey: RoadmapItems.all),
+    CommandsListPage(groupKey: RoadmapItems.all),
 
     // ExplainPage(topic: "ok", group: '',),
     // BookPageEffect(),
-
-    TodoListPage()
+    TaskSearchPage()
+    // TodoListPage()
   ];
 
   void _onItemTapped(int index) {

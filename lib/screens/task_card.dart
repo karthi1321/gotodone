@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gotodone/models/task_model.dart';
+import 'package:gotodone/screens/FavoriteTaskButton.dart';
+import 'package:gotodone/screens/FlagColorSelector.dart';
+import 'package:gotodone/screens/TaskCompletionRadio.dart';
+import 'package:gotodone/screens/TaskInfo.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TaskCard extends StatefulWidget {
@@ -23,7 +28,8 @@ class TaskCard extends StatefulWidget {
 class _TaskCardState extends State<TaskCard> {
   late Color? priorityFlag = widget.task.priorityFlag;
   late int? priorityLevel = widget.task.priorityLevel;
-  bool _isRemoved = false; // To track if task was removed
+  bool _isRemoved = false;
+  bool showImage = false;  // Added flag to control image visibility
 
   @override
   void initState() {
@@ -31,7 +37,6 @@ class _TaskCardState extends State<TaskCard> {
     _loadFlagAndFavoriteStatus();
   }
 
-  // Load the flag color and favorite status from SharedPreferences
   Future<void> _loadFlagAndFavoriteStatus() async {
     final prefs = await SharedPreferences.getInstance();
     String taskId = widget.task.id.toString();
@@ -39,10 +44,10 @@ class _TaskCardState extends State<TaskCard> {
     setState(() {
       priorityFlag = Color(prefs.getInt('flag_$taskId') ?? Colors.grey.value);
       widget.task.isFav = prefs.getBool('fav_$taskId') ?? false;
+      showImage = widget.task.status != 1;  // Set the flag based on task status
     });
   }
 
-  // Save flag color and favorite status to SharedPreferences
   Future<void> _saveFlagAndFavoriteStatus() async {
     final prefs = await SharedPreferences.getInstance();
     String taskId = widget.task.id.toString();
@@ -53,7 +58,7 @@ class _TaskCardState extends State<TaskCard> {
 
   @override
   Widget build(BuildContext context) {
-    return widget.task.status == 1 && !_isRemoved // Only show tasks with status 1 and not removed
+    return widget.task.status == 1 && !_isRemoved
         ? Card(
             margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             elevation: 5,
@@ -61,77 +66,46 @@ class _TaskCardState extends State<TaskCard> {
               borderRadius: BorderRadius.circular(12.0),
             ),
             child: InkWell(
-              onTap: () {}, // No action when tapping the card itself
+              onTap: () {},
               borderRadius: BorderRadius.circular(12.0),
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Row(
                   children: [
-                    // Radio button to mark as completed
-                    Padding(
-                      padding: const EdgeInsets.only(right: 12.0),
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            widget.task.status = 2; // Mark task as completed
-                            _isRemoved = true; // Mark as removed for visibility
-                          });
-                          widget.onComplete();
-                          _showUndoSnackBar(); // Show undo option
-                        },
-                        child: widget.task.status == 2
-                            ? Icon(Icons.radio_button_checked, color: Colors.green, size: 30)
-                            : Icon(Icons.radio_button_unchecked, color: Colors.grey, size: 30),
-                      ),
+                    TaskCompletionRadio(
+                      isCompleted: widget.task.status == 2,
+                      onTap: () {
+                        setState(() {
+                          widget.task.status = 2;
+                          _isRemoved = true;
+                          showImage = true; // Set the flag to true when completed
+                        });
+                        widget.onComplete();
+                        _showUndoSnackBar();
+                      },
                     ),
-                    // Task details and buttons for flag and favorite
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            widget.task.title,
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            widget.task.label,
-                            style: TextStyle(
-                              color: Colors.grey[700],
-                              fontSize: 14,
-                            ),
-                          ),
-                        ],
-                      ),
+                    TaskInfo(
+                      title: widget.task.title,
+                      label: widget.task.label,
                     ),
                     Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        IconButton(
-                          icon: widget.task.isFav
-                              ? Icon(Icons.star, color: const Color.fromARGB(255, 187, 7, 7))
-                              : Icon(Icons.star_border),
-                          onPressed: () {
+                        FavoriteTaskButton(
+                          isFav: widget.task.isFav,
+                          onTap: () {
                             setState(() {
                               widget.task.isFav = !widget.task.isFav;
                             });
                             _saveFlagAndFavoriteStatus();
                             widget.onSave();
                           },
-                          tooltip: widget.task.isFav
-                              ? 'Remove from Favorites'
-                              : 'Add to Favorites',
                         ),
-                        IconButton(
-                          icon: Icon(Icons.flag, color: priorityFlag ?? Colors.grey),
-                          onPressed: () {
+                        FlagColorSelector(
+                          currentColor: priorityFlag,
+                          onTap: () {
                             _showFlagColorDialog(context);
                           },
-                          tooltip: 'Set Flag Color',
                         ),
                       ],
                     ),
@@ -140,10 +114,30 @@ class _TaskCardState extends State<TaskCard> {
               ),
             ),
           )
-        : SizedBox.shrink(); // Hide task if it is marked as completed or removed
+        : _buildNoDataFoundMessage();
   }
 
-  // Show a Snackbar with undo option
+  Widget _buildNoDataFoundMessage() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (showImage)  // Only show the image if showImage is true
+            SvgPicture.asset(
+              'assets/Checklist.svg', // Replace with your SVG path
+              height: 100.0,
+              width: 100.0,
+            ),
+          SizedBox(height: 16),
+          Text(
+            'No Data Found for this Category',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+        ],
+      ),
+    );
+  }
+
   void _showUndoSnackBar() {
     final snackBar = SnackBar(
       content: Text('Task completed!'),
@@ -151,17 +145,17 @@ class _TaskCardState extends State<TaskCard> {
         label: 'Undo',
         onPressed: () {
           setState(() {
-            _isRemoved = false; // Undo removal and task status
-            widget.task.status = 1; // Change status back to not completed
+            _isRemoved = false;
+            widget.task.status = 1;
+            showImage = false;  // Set the flag to false when undone
           });
-          widget.onRemove(); // Undo removal action
+          widget.onRemove();
         },
       ),
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
-  // Dialog to select flag color
   void _showFlagColorDialog(BuildContext context) {
     showDialog(
       context: context,

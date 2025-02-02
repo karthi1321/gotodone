@@ -57,4 +57,14 @@ class TaskManager {
       print("Duplicate task detected, not adding: ${task.title}");
     }
   }
+
+
+   // Filter tasks based on status and label
+  static List<Task> filterTasks({int? status, String? label}) {
+    return _taskCache.where((task) {
+      bool matchesStatus = status == null || task.status == status;
+      bool matchesLabel = label == null || task.label.toLowerCase() == label.toLowerCase();
+      return matchesStatus && matchesLabel;
+    }).toList();
+  }
 }

@@ -11,10 +11,13 @@ class Task {
   bool hasAttachment;
   bool isFav;
   int? completedTime;
-
+  
   // Separate flag for priority color and priority level
   Color? priorityFlag; // Priority flag (color)
   int? priorityLevel; // Priority level (1-5)
+  
+  int? dueDate; // Due date as a timestamp (milliseconds since epoch)
+  String? note; // A note or description for additional information about the task.
 
   Task({
     required this.id,
@@ -29,6 +32,8 @@ class Task {
     this.completedTime,
     this.priorityFlag,
     this.priorityLevel,
+    this.dueDate,
+    this.note, // Add note to constructor
   });
 
   Map<String, dynamic> toJson() => {
@@ -42,8 +47,10 @@ class Task {
         'has_attachment': hasAttachment,
         'is_fav': isFav,
         'completed_time': completedTime,
-        'priority_flag': priorityFlag?.value, // Serialize the color
-        'priority_level': priorityLevel, // Serialize the level
+        'priority_flag': priorityFlag?.value,
+        'priority_level': priorityLevel,
+        'due_date': dueDate,
+        'note': note, // Serialize the note
       };
 
   factory Task.fromJson(Map<String, dynamic> json) {
@@ -60,7 +67,15 @@ class Task {
       completedTime: json['completed_time'],
       priorityFlag: json['priority_flag'] != null ? Color(json['priority_flag']) : null,
       priorityLevel: json['priority_level'],
+      dueDate: json['due_date'],
+      note: json['note'], // Deserialize the note
     );
+  }
+
+  // Getter and Setter for note
+  String? get getNote => note;
+  set setNote(String? newNote) {
+    note = newNote;
   }
 
   // Getter for priorityFlag
@@ -69,5 +84,13 @@ class Task {
   // Setter for priorityFlag
   set setPriorityFlag(Color flagColor) {
     priorityFlag = flagColor;
+  }
+
+  // Getter for dueDate
+  int? get getDueDate => dueDate;
+
+  // Setter for dueDate
+  set setDueDate(int? dueDateTimestamp) {
+    dueDate = dueDateTimestamp;
   }
 }

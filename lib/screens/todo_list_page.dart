@@ -3,6 +3,7 @@ import 'package:gotodone/models/task_model.dart';
 import 'package:gotodone/screens/TaskDialog.dart';
 import 'package:gotodone/screens/task_card.dart';
 import 'package:gotodone/utils/task_manager.dart'; // Import TaskManager
+import 'package:flutter_svg/flutter_svg.dart';  // Import flutter_svg for SVG support
 
 class TodoListPage extends StatefulWidget {
   @override
@@ -11,6 +12,7 @@ class TodoListPage extends StatefulWidget {
 
 class _TodoListPageState extends State<TodoListPage> {
   List<Task> _tasks = [];
+  String selectedLabel = "All";
 
   @override
   void initState() {
@@ -19,10 +21,12 @@ class _TodoListPageState extends State<TodoListPage> {
   }
 
   Future<void> _loadTasks() async {
-    // Load tasks from SharedPreferences
-    List<Task> tasks = await TaskManager.loadTasks();
+    List<Task> tasks = await TaskManager.filterTasks(
+      status: 3, // You can adjust this as per your requirements
+      label: selectedLabel == "All" ? null : selectedLabel,  // Filter tasks based on selected label
+    );
     setState(() {
-      _tasks = tasks; // Only update the state once after loading tasks
+      _tasks = tasks; // Update state after loading tasks
     });
   }
 
@@ -32,32 +36,25 @@ class _TodoListPageState extends State<TodoListPage> {
 
   void _addTask(String title, bool isFav) {
     if (title.isNotEmpty) {
-      print('Attempting to add task: $title');
-
-      // Generate a new unique task ID
       Task newTask = Task(
-        id: DateTime.now().millisecondsSinceEpoch,  // Unique ID based on timestamp
+        id: DateTime.now().millisecondsSinceEpoch, 
         status: 1,
         title: title,
         createdTime: DateTime.now().millisecondsSinceEpoch,
-        label: "work",
+        label: selectedLabel, // Use selected label here
         modifiedTime: DateTime.now().millisecondsSinceEpoch,
         hasSubtask: false,
         hasAttachment: false,
         isFav: isFav,
       );
 
-      // Check for duplicate task in _tasks list
-      bool taskExists = _tasks.any((t) =>  t.id == newTask.id);
+      bool taskExists = _tasks.any((t) => t.id == newTask.id);
       
       if (!taskExists) {
-        TaskManager.addTask( newTask);  // Add to TaskManager
+        TaskManager.addTask(newTask);  
         setState(() {
-          _tasks.add(newTask);  // Update state and UI
+          _tasks.add(newTask);  
         });
-        print('Task added: ${newTask.id}');
-      } else {
-        print('Duplicate task detected, not adding: ${newTask.id}');
       }
     }
   }
@@ -72,11 +69,12 @@ class _TodoListPageState extends State<TodoListPage> {
   void _markTaskCompleted(int index) {
     TaskManager.markTaskCompleted(_tasks, index);
     setState(() {
-      _tasks[index].status = 2; // Mark as completed
+      _tasks[index].status = 2;
       _tasks[index].completedTime = DateTime.now().millisecondsSinceEpoch;
     });
   }
-void _showAddTaskDialog() {
+
+  void _showAddTaskDialog() {
     TextEditingController taskController = TextEditingController();
     bool isFav = false;
 
@@ -93,26 +91,107 @@ void _showAddTaskDialog() {
     );
   }
 
+  void _showLabelSelectionDialog() {
+    showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+      builder: (context) {
+        return Container(
+          height: 200,
+          child: ListView(
+            children: [
+              ListTile(
+                title: Text("All"),
+                onTap: () {
+                  setState(() {
+                    selectedLabel = "All";
+                    _loadTasks(); // Reload tasks with no label filter
+                  });
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text("Personal"),
+                onTap: () {
+                  setState(() {
+                    selectedLabel = "Personal";
+                    _loadTasks(); // Reload tasks with "Personal" label filter
+                  });
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text("Wishlist"),
+                onTap: () {
+                  setState(() {
+                    selectedLabel = "Wishlist";
+                    _loadTasks(); // Reload tasks with "Wishlist" label filter
+                  });
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text("Birthday"),
+                onTap: () {
+                  setState(() {
+                    selectedLabel = "Birthday";
+                    _loadTasks(); // Reload tasks with "Birthday" label filter
+                  });
+                  Navigator.pop(context);
+                },
+              ),
+              // Add more labels here as needed
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("To-Do List"),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.blue,
         elevation: 0,
+        actions: [
+          GestureDetector(
+            onTap: _showLabelSelectionDialog,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Chip(
+                label: Text(selectedLabel),
+                backgroundColor: Colors.blueAccent,
+                avatar: Icon(Icons.label, color: Colors.white),
+              ),
+            ),
+          ),
+        ],
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 8),
-        itemCount: _tasks.length,
-        itemBuilder: (context, index) {
-          return TaskCard(
-            task: _tasks[index],
-            onComplete: () => _markTaskCompleted(index),
-            onRemove: () => _removeTask(index),
-            onSave: () {}, // Implement save logic if needed
-          );
-        },
-      ),
+      body: _tasks.isEmpty
+          ? Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SvgPicture.asset('assets/Checklist.svg', height: 100, width: 100),
+                  const SizedBox(height: 16),
+                  Text('No task in this category', style: TextStyle(fontSize: 16, color: Colors.grey)),
+                ],
+              ),
+            )
+          : ListView.builder(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              itemCount: _tasks.length,
+              itemBuilder: (context, index) {
+                return TaskCard(
+                  task: _tasks[index],
+                  onComplete: () => _markTaskCompleted(index),
+                  onRemove: () => _removeTask(index),
+                  onSave: () {}, // Implement save logic if needed
+                );
+              },
+            ),
       floatingActionButton: FloatingActionButton(
         onPressed: _showAddTaskDialog,
         child: Icon(Icons.add),

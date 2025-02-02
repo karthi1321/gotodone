@@ -103,6 +103,7 @@ flutter:
     # - assets/content/commands.json
     - assets/linux_100_days_tips.json
     - assets/faq.json
+    - assets/Checklist.svg
     # - lib/assets/commands.json
 
     
