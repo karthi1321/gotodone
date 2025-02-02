@@ -1,78 +1,7 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-class Task {
-  int id;
-  int status; // 1 for incomplete, 2 for completed
-  String title;
-  int createdTime;
-  String label;
-  int modifiedTime;
-  bool hasSubtask;
-  bool hasAttachment;
-  bool isFav;
-  int? completedTime; // New field to store completion time
-
-  Task({
-    required this.id,
-    required this.status,
-    required this.title,
-    required this.createdTime,
-    required this.label,
-    required this.modifiedTime,
-    required this.hasSubtask,
-    required this.hasAttachment,
-    required this.isFav,
-    this.completedTime,
-  });
-
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'status': status,
-        'title': title,
-        'created_time': createdTime,
-        'label': label,
-        'modified_time': modifiedTime,
-        'has_subtask': hasSubtask,
-        'has_attachment': hasAttachment,
-        'is_fav': isFav,
-        'completed_time': completedTime, // Serialize the completed time
-      };
-
-  factory Task.fromJson(Map<String, dynamic> json) {
-    return Task(
-      id: json['id'],
-      status: json['status'],
-      title: json['title'],
-      createdTime: json['created_time'],
-      label: json['label'],
-      modifiedTime: json['modified_time'],
-      hasSubtask: json['has_subtask'],
-      hasAttachment: json['has_attachment'],
-      isFav: json['is_fav'],
-      completedTime: json['completed_time'], // Deserialize completed time
-    );
-  }
-}
-
-class TaskStorage {
-  static const String _key = 'tasks';
-
-  static Future<List<Task>> loadTasks() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<String>? taskList = prefs.getStringList(_key);
-    return taskList == null
-        ? []
-        : taskList.map((task) => Task.fromJson(json.decode(task))).toList();
-  }
-
-  static Future<void> saveTasks(List<Task> tasks) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<String> taskList = tasks.map((task) => json.encode(task.toJson())).toList();
-    prefs.setStringList(_key, taskList);
-  }
-}
+import 'package:gotodone/models/task_model.dart';
+import 'package:gotodone/screens/task_card.dart';
+ import 'package:gotodone/utils/task_manager.dart'; // Import TaskManager
 
 class TodoListPage extends StatefulWidget {
   @override
@@ -89,12 +18,12 @@ class _TodoListPageState extends State<TodoListPage> {
   }
 
   Future<void> _loadTasks() async {
-    _tasks = await TaskStorage.loadTasks();
+    _tasks = await TaskManager.loadTasks();
     setState(() {});
   }
 
   Future<void> _saveTasks() async {
-    await TaskStorage.saveTasks(_tasks);
+    await TaskManager.saveTasks(_tasks);
   }
 
   void _addTask(String title, bool isFav) {
@@ -110,26 +39,26 @@ class _TodoListPageState extends State<TodoListPage> {
         hasAttachment: false,
         isFav: isFav,
       );
+      TaskManager.addTask(_tasks, newTask);
       setState(() {
         _tasks.add(newTask);
       });
-      _saveTasks();
     }
   }
 
   void _removeTask(int index) {
+    TaskManager.removeTask(_tasks, index);
     setState(() {
       _tasks.removeAt(index);
     });
-    _saveTasks();
   }
 
   void _markTaskCompleted(int index) {
+    TaskManager.markTaskCompleted(_tasks, index);
     setState(() {
       _tasks[index].status = 2; // Mark as completed
       _tasks[index].completedTime = DateTime.now().millisecondsSinceEpoch;
     });
-    _saveTasks();
   }
 
   void _showAddTaskDialog() {
@@ -137,7 +66,7 @@ class _TodoListPageState extends State<TodoListPage> {
     bool isFav = false;
 
     showModalBottomSheet(
-      isScrollControlled: true, 
+      isScrollControlled: true,
       context: context,
       builder: (context) {
         return Padding(
@@ -230,6 +159,7 @@ class _TodoListPageState extends State<TodoListPage> {
             task: _tasks[index],
             onComplete: () => _markTaskCompleted(index),
             onRemove: () => _removeTask(index),
+            onSave: () {}, // Implement save logic if needed
           );
         },
       ),
@@ -237,123 +167,6 @@ class _TodoListPageState extends State<TodoListPage> {
         onPressed: _showAddTaskDialog,
         child: Icon(Icons.add),
         backgroundColor: Colors.blueAccent,
-      ),
-    );
-  }
-}
-
-class TaskCard extends StatelessWidget {
-  final Task task;
-  final VoidCallback onComplete;
-  final VoidCallback onRemove;
-
-  const TaskCard({
-    required this.task,
-    required this.onComplete,
-    required this.onRemove,
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      elevation: 3,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-      child: InkWell(
-        onTap: onComplete,
-        borderRadius: BorderRadius.circular(15.0),
-        child: Stack(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    radius: 28,
-                    backgroundColor: Colors.blue,
-                    child: Icon(
-                      Icons.check,
-                      color: Colors.white,
-                      size: 24,
-                    ),
-                  ),
-                  const SizedBox(width: 16),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 48.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            task.title,
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            task.label,
-                            style: TextStyle(
-                              color: Colors.grey[700],
-                              fontSize: 14,
-                            ),
-                          ),
-                          if (task.status == 2) ...[
-                            const SizedBox(height: 8),
-                            Text(
-                              "Completed at: ${DateTime.fromMillisecondsSinceEpoch(task.completedTime!)}",
-                              style: TextStyle(
-                                color: Colors.green,
-                                fontSize: 14,
-                              ),
-                            ),
-                          ]
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Positioned(
-              top: 8,
-              right: 8,
-              child: IconButton(
-                icon: const Icon(Icons.info_outline),
-                color: Colors.blue,
-                onPressed: () {
-                  // Handle showing task details
-                },
-                tooltip: 'Details',
-              ),
-            ),
-            Positioned(
-              bottom: 8,
-              right: 8,
-              child: IconButton(
-                icon: task.isFav ? Icon(Icons.star, color: Colors.yellow) : Icon(Icons.star_border),
-                onPressed: () {
-                  // Handle toggling favorite status
-                },
-                tooltip: task.isFav ? 'Remove from Favorites' : 'Add to Favorites',
-              ),
-            ),
-            Positioned(
-              bottom: 8,
-              left: 8,
-              child: IconButton(
-                icon: const Icon(Icons.delete, color: Colors.red),
-                onPressed: onRemove,
-                tooltip: 'Remove Task',
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
