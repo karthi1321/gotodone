@@ -12,7 +12,9 @@ class TodoListPage extends StatefulWidget {
 
 class _TodoListPageState extends State<TodoListPage> {
   List<Task> _tasks = [];
-  String selectedLabel = "All";
+  String selectedLabel = "All";  // Default selected label
+
+  List<String> availableLabels = ["All", "Personal", "Wishlist", "Birthday", "Work", "Shopping", "Urgent", "Family", "Important"];
 
   @override
   void initState() {
@@ -22,7 +24,7 @@ class _TodoListPageState extends State<TodoListPage> {
 
   Future<void> _loadTasks() async {
     List<Task> tasks = await TaskManager.filterTasks(
-      status: 3, // You can adjust this as per your requirements
+      status: 3,  // You can adjust this as per your requirements
       label: selectedLabel == "All" ? null : selectedLabel,  // Filter tasks based on selected label
     );
     setState(() {
@@ -91,79 +93,51 @@ class _TodoListPageState extends State<TodoListPage> {
     );
   }
 
-  void _showLabelSelectionDialog() {
-    showModalBottomSheet(
-      isScrollControlled: true,
-      context: context,
-      builder: (context) {
-        return Container(
-          height: 200,
-          child: ListView(
-            children: [
-              ListTile(
-                title: Text("All"),
-                onTap: () {
-                  setState(() {
-                    selectedLabel = "All";
-                    _loadTasks(); // Reload tasks with no label filter
-                  });
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: Text("Personal"),
-                onTap: () {
-                  setState(() {
-                    selectedLabel = "Personal";
-                    _loadTasks(); // Reload tasks with "Personal" label filter
-                  });
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: Text("Wishlist"),
-                onTap: () {
-                  setState(() {
-                    selectedLabel = "Wishlist";
-                    _loadTasks(); // Reload tasks with "Wishlist" label filter
-                  });
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: Text("Birthday"),
-                onTap: () {
-                  setState(() {
-                    selectedLabel = "Birthday";
-                    _loadTasks(); // Reload tasks with "Birthday" label filter
-                  });
-                  Navigator.pop(context);
-                },
-              ),
-              // Add more labels here as needed
-            ],
-          ),
-        );
-      },
-    );
+  // Function to change the selected label
+  void _changeLabel(String label) {
+    setState(() {
+      selectedLabel = label;
+      _loadTasks();  // Reload tasks when label is changed
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("To-Do List"),
-        backgroundColor: Colors.blue,
+        title: Text("To-Do List", style: TextStyle(fontWeight: FontWeight.bold)),
+        backgroundColor: Colors.blueAccent,
         elevation: 0,
         actions: [
-          GestureDetector(
-            onTap: _showLabelSelectionDialog,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Chip(
-                label: Text(selectedLabel),
-                backgroundColor: Colors.blueAccent,
-                avatar: Icon(Icons.label, color: Colors.white),
+          // Horizontal Scrollable Labels with better styling
+          Container(
+            margin: EdgeInsets.only(right: 8),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,  // Enable horizontal scrolling
+              child: Row(
+                children: availableLabels.map((label) {
+                  return GestureDetector(
+                    onTap: () => _changeLabel(label),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Chip(
+                        label: Text(
+                          label,
+                          style: TextStyle(
+                            color: selectedLabel == label ? Colors.white : Colors.black,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        backgroundColor: selectedLabel == label ? Colors.blueAccent : Colors.grey[200],
+                        avatar: Icon(Icons.label, color: selectedLabel == label ? Colors.white : Colors.black),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        elevation: selectedLabel == label ? 4 : 0,
+                      ),
+                    ),
+                  );
+                }).toList(),
               ),
             ),
           ),
