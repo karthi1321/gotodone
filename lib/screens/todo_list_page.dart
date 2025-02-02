@@ -124,6 +124,29 @@ class _TodoListPageState extends State<TodoListPage> {
     );
   }
 
+  // Show all tasks option
+  void _showAllTasks() {
+    setState(() {
+      selectedLabel = "All";  // Reset the label to "All"
+      _loadTasks();  // Reload tasks with no label filter
+    });
+    _saveSelectedLabel("All");  // Save the label as "All"
+  }
+
+ // Option for the 3-dot menu
+  void _onMenuOptionSelected(String value) {
+    switch (value) {
+      case 'View Complete Task':
+        _showAllTasks(); // Show all tasks
+        break;
+      case 'Search':
+        // Implement search functionality (e.g., navigate to a search page)
+        break;
+      case 'New List':
+        // Implement new list functionality
+        break;
+    }
+  }
   // Show the label selection dialog
   void _showLabelSelectionDialog() {
     showModalBottomSheet(
@@ -221,11 +244,43 @@ class _TodoListPageState extends State<TodoListPage> {
               ),
             ),
           ),
-          IconButton(
-            icon: Icon(Icons.filter_list),
-            onPressed: _toggleShowCompletedTasks,
-            tooltip: 'Show Completed Tasks',
-          ),
+          
+        PopupMenuButton<String>(
+  onSelected: _onMenuOptionSelected,
+  itemBuilder: (context) => [
+    PopupMenuItem<String>(
+      value: 'View Complete Task',
+      child: Row(
+        children: [
+          Icon(Icons.check_circle_outline, color: Colors.green),  // Icon for 'View Complete Task'
+          const SizedBox(width: 8),
+          Text('View Complete Task'),
+        ],
+      ),
+    ),
+    PopupMenuItem<String>(
+      value: 'New List',
+      child: Row(
+        children: [
+          Icon(Icons.add, color: Colors.blue),  // Icon for 'New List'
+          const SizedBox(width: 8),
+          Text('New List'),
+        ],
+      ),
+    ),
+    PopupMenuItem<String>(
+      value: 'Search',
+      child: Row(
+        children: [
+          Icon(Icons.search, color: Colors.orange),  // Icon for 'Search'
+          const SizedBox(width: 8),
+          Text('Search'),
+        ],
+      ),
+    ),
+  ],
+)
+
         ],
       ),
       body: _tasks.isEmpty
