@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gotodone/models/task_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TaskCard extends StatefulWidget {
   final Task task;
@@ -20,38 +21,60 @@ class TaskCard extends StatefulWidget {
 }
 
 class _TaskCardState extends State<TaskCard> {
-  // Variables for flag color and priority level
   late Color? priorityFlag = widget.task.priorityFlag;
   late int? priorityLevel = widget.task.priorityLevel;
 
   @override
+  void initState() {
+    super.initState();
+    _loadFlagAndFavoriteStatus();
+  }
+
+  // Load the flag color and favorite status from SharedPreferences
+  Future<void> _loadFlagAndFavoriteStatus() async {
+    final prefs = await SharedPreferences.getInstance();
+    String taskId = widget.task.id.toString();
+
+    setState(() {
+      priorityFlag = Color(prefs.getInt('flag_$taskId') ?? Colors.grey.value);
+      widget.task.isFav = prefs.getBool('fav_$taskId') ?? false;
+    });
+  }
+
+  // Save flag color and favorite status to SharedPreferences
+  Future<void> _saveFlagAndFavoriteStatus() async {
+    final prefs = await SharedPreferences.getInstance();
+    String taskId = widget.task.id.toString();
+
+    await prefs.setInt('flag_$taskId', priorityFlag?.value ?? Colors.grey.value);
+    await prefs.setBool('fav_$taskId', widget.task.isFav);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Card(
+    return widget.task.status == 1 ? Card( // Only show tasks with status 1
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       elevation: 5,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.0), // Rounded corners
+        borderRadius: BorderRadius.circular(12.0),
       ),
       child: InkWell(
         onTap: widget.onComplete,
         borderRadius: BorderRadius.circular(12.0),
         child: Padding(
-          padding: const EdgeInsets.all(12.0), // Reduced padding
+          padding: const EdgeInsets.all(12.0),
           child: Row(
             children: [
-              // Left Side: Radio button (for task completion)
               Padding(
                 padding: const EdgeInsets.only(right: 12.0),
                 child: widget.task.status == 2
                     ? Icon(Icons.radio_button_checked, color: Colors.green, size: 30)
                     : Icon(Icons.radio_button_unchecked, color: Colors.grey, size: 30),
               ),
-              // Task title and label
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Task Title
                     Text(
                       widget.task.title,
                       style: const TextStyle(
@@ -61,7 +84,6 @@ class _TaskCardState extends State<TaskCard> {
                       ),
                     ),
                     const SizedBox(height: 4),
-                    // Task Label
                     Text(
                       widget.task.label,
                       style: TextStyle(
@@ -69,11 +91,9 @@ class _TaskCardState extends State<TaskCard> {
                         fontSize: 14,
                       ),
                     ),
-                    
                   ],
                 ),
               ),
-              // Right Side: Save and Flag buttons
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -81,12 +101,17 @@ class _TaskCardState extends State<TaskCard> {
                     icon: widget.task.isFav
                         ? Icon(Icons.star, color: Colors.yellow)
                         : Icon(Icons.star_border),
-                    onPressed: widget.onSave,
+                    onPressed: () {
+                      setState(() {
+                        widget.task.isFav = !widget.task.isFav;
+                      });
+                      _saveFlagAndFavoriteStatus();
+                      widget.onSave();
+                    },
                     tooltip: widget.task.isFav
                         ? 'Remove from Favorites'
                         : 'Add to Favorites',
                   ),
-                  // Flag Button (only shown if flag color isn't selected)
                   IconButton(
                     icon: Icon(Icons.flag, color: priorityFlag ?? Colors.grey),
                     onPressed: () {
@@ -94,14 +119,13 @@ class _TaskCardState extends State<TaskCard> {
                     },
                     tooltip: 'Set Flag Color',
                   )
-                  
                 ],
               ),
             ],
           ),
         ),
       ),
-    );
+    ) : SizedBox.shrink();
   }
 
   // Dialog to select flag color
@@ -122,10 +146,7 @@ class _TaskCardState extends State<TaskCard> {
           actions: [
             TextButton(
               onPressed: () {
-                widget.onSave();
-                setState(() {
-                  priorityFlag = widget.task.priorityFlag; // Update the flag color
-                });
+                _saveFlagAndFavoriteStatus();
                 Navigator.pop(context);
               },
               child: Text('Save'),
@@ -142,61 +163,16 @@ class _TaskCardState extends State<TaskCard> {
     );
   }
 
-  // Helper for flag color selection
   Widget _buildFlagOption(Color color, String label, BuildContext context) {
     return IconButton(
       icon: Icon(Icons.circle, color: color),
       onPressed: () {
         setState(() {
-          widget.task.priorityFlag = color; // Update the task's flag
-          priorityFlag = color; // Update the state to reflect the new flag
+          widget.task.priorityFlag = color;
+          priorityFlag = color;
         });
-        Navigator.pop(context); // Close the dialog
-      },
-    );
-  }
-
-  // Dialog to select priority level
-  void _showPriorityLevelDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text('Set Priority Level'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text('Select priority level (1 to 5):'),
-              Slider(
-                value: widget.task.priorityLevel?.toDouble() ?? 3.0,
-                min: 1,
-                max: 5,
-                divisions: 4,
-                onChanged: (value) {
-                  setState(() {
-                    widget.task.priorityLevel = value.toInt();
-                    priorityLevel = widget.task.priorityLevel; // Update the priority level
-                  });
-                },
-              ),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                widget.onSave();
-                Navigator.pop(context);
-              },
-              child: Text('Save'),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text('Cancel'),
-            ),
-          ],
-        );
+        Navigator.pop(context);
+        _saveFlagAndFavoriteStatus();
       },
     );
   }

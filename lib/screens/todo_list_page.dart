@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gotodone/models/task_model.dart';
 import 'package:gotodone/screens/task_card.dart';
- import 'package:gotodone/utils/task_manager.dart'; // Import TaskManager
+import 'package:gotodone/utils/task_manager.dart'; // Import TaskManager
 
 class TodoListPage extends StatefulWidget {
   @override
@@ -18,18 +18,24 @@ class _TodoListPageState extends State<TodoListPage> {
   }
 
   Future<void> _loadTasks() async {
-    _tasks = await TaskManager.loadTasks();
-    setState(() {});
+    // Load tasks from SharedPreferences
+    List<Task> tasks = await TaskManager.loadTasks();
+    setState(() {
+      _tasks = tasks; // Only update the state once after loading tasks
+    });
   }
 
   Future<void> _saveTasks() async {
-    await TaskManager.saveTasks(_tasks);
+    await TaskManager.saveTasks();
   }
 
   void _addTask(String title, bool isFav) {
     if (title.isNotEmpty) {
+      print('Attempting to add task: $title');
+
+      // Generate a new unique task ID
       Task newTask = Task(
-        id: DateTime.now().millisecondsSinceEpoch,
+        id: DateTime.now().millisecondsSinceEpoch,  // Unique ID based on timestamp
         status: 1,
         title: title,
         createdTime: DateTime.now().millisecondsSinceEpoch,
@@ -39,10 +45,19 @@ class _TodoListPageState extends State<TodoListPage> {
         hasAttachment: false,
         isFav: isFav,
       );
-      TaskManager.addTask(_tasks, newTask);
-      setState(() {
-        _tasks.add(newTask);
-      });
+
+      // Check for duplicate task in _tasks list
+      bool taskExists = _tasks.any((t) => t.title == newTask.title || t.id == newTask.id);
+      
+      if (!taskExists) {
+        TaskManager.addTask( newTask);  // Add to TaskManager
+        setState(() {
+          _tasks.add(newTask);  // Update state and UI
+        });
+        print('Task added: ${newTask.id}');
+      } else {
+        print('Duplicate task detected, not adding: ${newTask.id}');
+      }
     }
   }
 
