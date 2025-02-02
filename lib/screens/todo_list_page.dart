@@ -14,6 +14,7 @@ class TodoListPage extends StatefulWidget {
 class _TodoListPageState extends State<TodoListPage> {
   List<Task> _tasks = [];
   String selectedLabel = "All";  // Default selected label
+  bool showCompletedTasks = false;  // Flag to toggle between open and completed tasks
 
   @override
   void initState() {
@@ -37,14 +38,28 @@ class _TodoListPageState extends State<TodoListPage> {
     await prefs.setString('selectedLabel', label);  // Save the label to SharedPreferences
   }
 
-  // Load tasks based on the selected label
+  // Load tasks based on the selected label and task completion status
   Future<void> _loadTasks() async {
     List<Task> tasks = await TaskManager.filterTasks(
-      status: 1, // You can adjust this as per your requirements
+      status: showCompletedTasks ? 2 : 1,  // 1 for open tasks, 2 for completed tasks
       label: selectedLabel == "All" ? null : selectedLabel,  // Filter tasks based on selected label
     );
+    // Sort tasks by created time for open tasks and completed time for completed tasks
+    tasks.sort((a, b) {
+      DateTime aTime = showCompletedTasks ? DateTime.fromMillisecondsSinceEpoch(a.completedTime ?? 0) : DateTime.fromMillisecondsSinceEpoch(a.createdTime);
+      DateTime bTime = showCompletedTasks ? DateTime.fromMillisecondsSinceEpoch(b.completedTime??0) : DateTime.fromMillisecondsSinceEpoch(b.createdTime);
+      return bTime.compareTo(aTime); // Sort in descending order
+    });
     setState(() {
       _tasks = tasks; // Update state after loading tasks
+    });
+  }
+
+  // Toggle between showing open and completed tasks
+  void _toggleShowCompletedTasks() {
+    setState(() {
+      showCompletedTasks = !showCompletedTasks;
+      _loadTasks(); // Reload tasks based on new filter
     });
   }
 
@@ -68,7 +83,7 @@ class _TodoListPageState extends State<TodoListPage> {
       if (!taskExists) {
         TaskManager.addTask(newTask);  
         setState(() {
-          _tasks.add(newTask);  
+          _tasks.insert(0, newTask);  // Add new task at the top
         });
       }
     }
@@ -177,30 +192,6 @@ class _TodoListPageState extends State<TodoListPage> {
     );
   }
 
-  // Show all tasks option
-  void _showAllTasks() {
-    setState(() {
-      selectedLabel = "All";  // Reset the label to "All"
-      _loadTasks();  // Reload tasks with no label filter
-    });
-    _saveSelectedLabel("All");  // Save the label as "All"
-  }
-
-  // Option for the 3-dot menu
-  void _onMenuOptionSelected(String value) {
-    switch (value) {
-      case 'View Complete Task':
-        _showAllTasks(); // Show all tasks
-        break;
-      case 'Search':
-        // Implement search functionality (e.g., navigate to a search page)
-        break;
-      case 'New List':
-        // Implement new list functionality
-        break;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -230,22 +221,10 @@ class _TodoListPageState extends State<TodoListPage> {
               ),
             ),
           ),
-          PopupMenuButton<String>(
-            onSelected: _onMenuOptionSelected,
-            itemBuilder: (context) => [
-              PopupMenuItem<String>(
-                value: 'View Complete Task',
-                child: Text('View Complete Task'),
-              ),
-              PopupMenuItem<String>(
-                value: 'New List',
-                child: Text('New List'),
-              ),
-              PopupMenuItem<String>(
-                value: 'Search',
-                child: Text('Search'),
-              ),
-            ],
+          IconButton(
+            icon: Icon(Icons.filter_list),
+            onPressed: _toggleShowCompletedTasks,
+            tooltip: 'Show Completed Tasks',
           ),
         ],
       ),

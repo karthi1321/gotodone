@@ -60,15 +60,12 @@ class _PersistentBottomNavState extends State<PersistentBottomNav> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.explore),
-            label: 'Explore',
+            label: 'Tasks',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.merge_type),
-            label: 'Commands',
-          ),
+         
           BottomNavigationBarItem(
             icon: Icon(Icons.bookmark),
-            label: 'Saved',
+            label: 'important',
           ),
         ],
       ),

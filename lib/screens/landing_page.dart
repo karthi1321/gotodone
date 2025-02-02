@@ -59,31 +59,7 @@ class _LandingPageState extends State<LandingPage> {
   height: 300,  // Minimum height to ensure content doesn't break inside
   child: BannerSection(),
 ),
-
-      const SizedBox(height: 30),
-      CourseGridSectionTitle(),
-      const SizedBox(height: 50),
-      const ScrollableBannerSection(
-        banners: [
-          {
-            'title': 'Understanding Flow Over Syntax Memorization',
-            'description':
-                'Our goal is to make programming accessible to everyone by emphasizing understanding and logic flow, rather than memorizing syntax.',
-          },
-          {
-            'title': 'Empowering Accessibility: Text-to-Speech Audio Support',
-            'description':
-                'Enhance your experience with our text-to-speech feature, making content accessible to all users.',
-          },
-          {
-            'title': 'Privacy First: Your Data, Our Priority',
-            'description':
-                'Our platform prioritizes user privacy and security. As such, we do not retain any user data.',
-          },
-        ],
-      ),
-      const SizedBox(height: 30),
-      TextToSpeechWidget(),
+ 
       const SizedBox(height: 30),
     ]);
   }
