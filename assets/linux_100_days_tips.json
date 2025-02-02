@@ -1,0 +1,254 @@
+{
+  "tips": [
+    {
+      "day": 1,
+      "tip": "Use 'git init' to initialize a new Git repository in your project directory.",
+      "level": "Beginner"
+    },
+    {
+      "day": 2,
+      "tip": "Run 'git status' frequently to check the state of your working directory and staging area.",
+      "level": "Beginner"
+    },
+    {
+      "day": 3,
+      "tip": "Use 'git add .' to stage all changes in your working directory.",
+      "level": "Beginner"
+    },
+    {
+      "day": 4,
+      "tip": "Use 'git commit -m \"message\"' to commit your changes with a descriptive message.",
+      "level": "Beginner"
+    },
+    {
+      "day": 5,
+      "tip": "Use 'git log --oneline' for a simplified view of your commit history.",
+      "level": "Intermediate"
+    },
+    {
+      "day": 6,
+      "tip": "Use 'git branch' to list all branches in your repository.",
+      "level": "Beginner"
+    },
+    {
+      "day": 7,
+      "tip": "Use 'git checkout -b branch_name' to create and switch to a new branch.",
+      "level": "Beginner"
+    },
+    {
+      "day": 8,
+      "tip": "Use 'git merge branch_name' to merge another branch into your current branch.",
+      "level": "Intermediate"
+    },
+    {
+      "day": 9,
+      "tip": "Use 'git diff' to view changes that haven’t been staged yet.",
+      "level": "Intermediate"
+    },
+    {
+      "day": 10,
+      "tip": "Use 'git stash' to save changes that you’re not ready to commit yet.",
+      "level": "Intermediate"
+    },
+    {
+      "day": 11,
+      "tip": "Run 'git stash apply' to retrieve changes you’ve stashed earlier.",
+      "level": "Intermediate"
+    },
+    {
+      "day": 12,
+      "tip": "Use 'git rebase branch_name' to reapply commits on top of another branch.",
+      "level": "Advanced"
+    },
+    {
+      "day": 13,
+      "tip": "Use 'git cherry-pick commit_hash' to apply specific commits from another branch.",
+      "level": "Advanced"
+    },
+    {
+      "day": 14,
+      "tip": "Use 'git revert commit_hash' to undo a specific commit by creating a new commit.",
+      "level": "Intermediate"
+    },
+    {
+      "day": 15,
+      "tip": "Use 'git reset --soft HEAD~1' to undo the last commit while keeping changes staged.",
+      "level": "Advanced"
+    },
+    {
+      "day": 16,
+      "tip": "Use 'git reset --hard HEAD~1' to undo the last commit and discard changes.",
+      "level": "Advanced"
+    },
+    {
+      "day": 17,
+      "tip": "Run 'git remote -v' to view all remote repositories linked to your local repo.",
+      "level": "Beginner"
+    },
+    {
+      "day": 18,
+      "tip": "Use 'git pull origin branch_name' to fetch and merge changes from a remote branch.",
+      "level": "Intermediate"
+    },
+    {
+      "day": 19,
+      "tip": "Use 'git push origin branch_name' to upload your changes to a remote branch.",
+      "level": "Beginner"
+    },
+    {
+      "day": 20,
+      "tip": "Use 'git clone repo_url' to create a local copy of a remote repository.",
+      "level": "Beginner"
+    },
+    {
+      "day": 21,
+      "tip": "Use 'git tag -a tag_name -m \"message\"' to create an annotated tag.",
+      "level": "Intermediate"
+    },
+    {
+      "day": 22,
+      "tip": "Run 'git fetch' to retrieve changes from a remote without merging them.",
+      "level": "Intermediate"
+    },
+    {
+      "day": 23,
+      "tip": "Use 'git log --graph --all' to view a visual representation of your branch history.",
+      "level": "Advanced"
+    },
+    {
+      "day": 24,
+      "tip": "Use 'git shortlog' to see a summary of commits grouped by author.",
+      "level": "Intermediate"
+    },
+    {
+      "day": 25,
+      "tip": "Use 'git clean -f' to remove untracked files from your working directory.",
+      "level": "Advanced"
+    },
+    {
+      "day": 26,
+      "tip": "Run 'git config --global user.name \"Your Name\"' to set your global username.",
+      "level": "Beginner"
+    },
+    {
+      "day": 27,
+      "tip": "Use 'git config --global user.email \"youremail@example.com\"' to set your global email.",
+      "level": "Beginner"
+    },
+    {
+      "day": 28,
+      "tip": "Use 'git config --list' to view all Git configuration settings.",
+      "level": "Beginner"
+    },
+    {
+      "day": 29,
+      "tip": "Run 'git blame filename' to see who made changes to specific lines in a file.",
+      "level": "Intermediate"
+    },
+    {
+      "day": 30,
+      "tip": "Use 'git bisect' to find the commit that introduced a bug.",
+      "level": "Advanced"
+    },
+    {
+      "day": 31,
+      "tip": "Use 'git archive' to create a ZIP or TAR archive of your repository.",
+      "level": "Advanced"
+    },
+    {
+      "day": 32,
+      "tip": "Use 'git log --since=\"2 weeks ago\"' to see commits made within a specific time frame.",
+      "level": "Intermediate"
+    },
+    {
+      "day": 33,
+      "tip": "Run 'git show commit_hash' to display the details of a specific commit.",
+      "level": "Intermediate"
+    },
+    {
+      "day": 34,
+      "tip": "Use 'git reflog' to view a history of all your branch changes.",
+      "level": "Advanced"
+    },
+    {
+      "day": 35,
+      "tip": "Run 'git config --global alias.co checkout' to create a shortcut for 'checkout.'",
+      "level": "Intermediate"
+    },
+    {
+      "day": 36,
+      "tip": "Use 'git diff --staged' to view changes that have been staged but not committed.",
+      "level": "Intermediate"
+    },
+    {
+      "day": 37,
+      "tip": "Run 'git tag' to list all tags in your repository.",
+      "level": "Beginner"
+    },
+    {
+      "day": 38,
+      "tip": "Use 'git fetch --prune' to remove remote-tracking branches that no longer exist.",
+      "level": "Advanced"
+    },
+    {
+      "day": 39,
+      "tip": "Use 'git reset --mixed HEAD~1' to undo a commit and unstage the changes.",
+      "level": "Advanced"
+    },
+    {
+      "day": 40,
+      "tip": "Use 'git rm --cached file' to remove a file from Git tracking but keep it locally.",
+      "level": "Intermediate"
+    },
+    {
+      "day": 41,
+      "tip": "Run 'git diff branch1..branch2' to see the differences between two branches.",
+      "level": "Intermediate"
+    },
+    {
+      "day": 42,
+      "tip": "Use 'git log --author=\"Author Name\"' to filter commits by a specific author.",
+      "level": "Intermediate"
+    },
+    {
+      "day": 43,
+      "tip": "Use 'git mv old_filename new_filename' to rename a file and stage the change.",
+      "level": "Beginner"
+    },
+    {
+      "day": 44,
+      "tip": "Run 'git push --tags' to push all your tags to the remote repository.",
+      "level": "Intermediate"
+    },
+    {
+      "day": 45,
+      "tip": "Use 'git log --stat' to view commit statistics including changes per file.",
+      "level": "Intermediate"
+    },
+    {
+      "day": 46,
+      "tip": "Use 'git commit --amend' to modify the most recent commit.",
+      "level": "Intermediate"
+    },
+    {
+      "day": 47,
+      "tip": "Run 'git branch -d branch_name' to delete a local branch safely.",
+      "level": "Beginner"
+    },
+    {
+      "day": 48,
+      "tip": "Use 'git cherry -v branch1 branch2' to view commits in branch1 that are missing in branch2.",
+      "level": "Advanced"
+    },
+    {
+      "day": 49,
+      "tip": "Use 'git config --global core.editor \"editor\"' to set your preferred editor for Git.",
+      "level": "Beginner"
+    },
+    {
+      "day": 50,
+      "tip": "Run 'git log --pretty=format:\"%h - %an, %ar : %s\"' for a custom commit log format.",
+      "level": "Advanced"
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+[
+  {
+    "command": "grep",
+    "title": "Search for Patterns in Files",
+    "description": "The 'grep' command searches for patterns in files and displays matching lines.",
+    "syntax": "grep [options] [pattern] [file]",
+    "example": "grep cheese recipes.txt",
+    "story": "Tom wants to find all the recipes that mention 'cheese'. He uses 'grep' to search for the word 'cheese' in the file 'recipes.txt'.",
+    "type": "basic",
+    "group": "text-processing",
+    "game": {
+      "hint": "Use 'grep' followed by the pattern and file name to search.",
+      "solution": "grep cheese recipes.txt"
+    }
+  },
+  {
+    "command": "awk",
+    "title": "Pattern Scanning and Processing",
+    "description": "The 'awk' command processes text by scanning for patterns and performing actions on matching lines.",
+    "syntax": "awk [pattern] [action] [file]",
+    "example": "awk '{print $1}' data.txt",
+    "story": "Jerry has a data file and wants to extract the first column from each line. He uses 'awk' to print only the first field from 'data.txt'.",
+    "type": "intermediate",
+    "group": "text-processing",
+    "game": {
+      "hint": "Use 'awk' with a pattern or action to process text files.",
+      "solution": "awk '{print $1}' data.txt"
+    }
+  },
+  {
+    "command": "sed",
+    "title": "Stream Editor",
+    "description": "The 'sed' command is used to perform basic text transformations on an input stream.",
+    "syntax": "sed [options] 's/pattern/replacement/' [file]",
+    "example": "sed 's/old/new/g' file.txt",
+    "story": "Jerry needs to replace every occurrence of 'old' with 'new' in his file. He uses 'sed' to perform the replacement in 'file.txt'.",
+    "type": "intermediate",
+    "group": "text-processing",
+    "game": {
+      "hint": "Use 'sed' with a substitution pattern to replace text.",
+      "solution": "sed 's/old/new/g' file.txt"
+    }
+  },
+  {
+    "command": "nano",
+    "title": "Edit Files",
+    "description": "The 'nano' command opens a simple text editor in the terminal, allowing users to edit files.",
+    "syntax": "nano [file]",
+    "example": "nano notes.txt",
+    "story": "Tom wants to create a quick note about his next cheese hunt. He uses 'nano' to open and edit 'notes.txt'.",
+    "type": "basic",
+    "group": "text-editing",
+    "game": {
+      "hint": "Use 'nano' followed by the file name to open it for editing.",
+      "solution": "nano notes.txt"
+    }
+  },
+  {
+    "command": "cat",
+    "title": "Concatenate and Display File Content",
+    "description": "The 'cat' command displays the content of a file and can concatenate multiple files.",
+    "syntax": "cat [file1] [file2] ...",
+    "example": "cat file.txt",
+    "story": "Jerry wants to read the contents of his cheese recipes file. He uses 'cat' to display the content of 'file.txt'.",
+    "type": "basic",
+    "group": "text-processing",
+    "game": {
+      "hint": "Use 'cat' followed by the file name to view its content.",
+      "solution": "cat file.txt"
+    }
+  },
+  {
+    "command": "head",
+    "title": "Display Beginning of File",
+    "description": "The 'head' command displays the first few lines of a file.",
+    "syntax": "head [options] [file]",
+    "example": "head -n 5 file.txt",
+    "story": "Tom only wants to see the first five lines of Jerry's recipe file. He uses 'head' to display the top 5 lines of 'file.txt'.",
+    "type": "basic",
+    "group": "text-processing",
+    "game": {
+      "hint": "Use 'head -n' followed by the number of lines and file name to display the top lines.",
+      "solution": "head -n 5 file.txt"
+    }
+  },
+  {
+    "command": "tail",
+    "title": "Display End of File",
+    "description": "The 'tail' command displays the last few lines of a file.",
+    "syntax": "tail [options] [file]",
+    "example": "tail -n 5 file.txt",
+    "story": "Jerry wants to see the last five lines of a log file. He uses 'tail' to display the bottom 5 lines of 'file.txt'.",
+    "type": "basic",
+    "group": "text-processing",
+    "game": {
+      "hint": "Use 'tail -n' followed by the number of lines and file name to display the bottom lines.",
+      "solution": "tail -n 5 file.txt"
+    }
+  },
+  {
+    "command": "cut",
+    "title": "Remove Sections from Lines",
+    "description": "The 'cut' command removes sections from each line of a file and outputs the result.",
+    "syntax": "cut [options] [file]",
+    "example": "cut -d',' -f1 data.csv",
+    "story": "Tom has a CSV file with a list of cheese types and prices. He uses 'cut' to extract only the first column (cheese types) from 'data.csv'.",
+    "type": "intermediate",
+    "group": "text-processing",
+    "game": {
+      "hint": "Use 'cut -d' with a delimiter and '-f' with the field number to extract columns.",
+      "solution": "cut -d',' -f1 data.csv"
+    }
+  },
+  {
+    "command": "wc",
+    "title": "Word Count",
+    "description": "The 'wc' command counts the number of lines, words, and characters in a file.",
+    "syntax": "wc [options] [file]",
+    "example": "wc -l file.txt",
+    "story": "Jerry wants to know how many lines are in his notes file. He uses 'wc -l' to count the lines in 'file.txt'.",
+    "type": "basic",
+    "group": "text-processing",
+    "game": {
+      "hint": "Use 'wc -l' followed by the file name to count the lines.",
+      "solution": "wc -l file.txt"
+    }
+  },
+  {
+    "command": "sort",
+    "title": "Sort Lines in a File",
+    "description": "The 'sort' command sorts the lines of a file in alphabetical or numerical order.",
+    "syntax": "sort [options] [file]",
+    "example": "sort names.txt",
+    "story": "Tom has a list of cheese names in a file. He uses 'sort' to arrange them in alphabetical order.",
+    "type": "intermediate",
+    "group": "text-processing",
+    "game": {
+      "hint": "Use 'sort' followed by the file name to sort its lines.",
+      "solution": "sort names.txt"
+    }
+  },
+  {
+    "command": "uniq",
+    "title": "Filter Unique Lines",
+    "description": "The 'uniq' command filters out or displays duplicate lines from a sorted file.",
+    "syntax": "uniq [options] [file]",
+    "example": "uniq sorted_data.txt",
+    "story": "Jerry wants to remove duplicate lines from a sorted list of recipes. He uses 'uniq' to get only the unique entries.",
+    "type": "intermediate",
+    "group": "text-processing",
+    "game": {
+      "hint": "Use 'uniq' with a sorted file to remove duplicates.",
+      "solution": "uniq sorted_data.txt"
+    }
+  }
+]

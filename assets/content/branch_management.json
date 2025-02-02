@@ -1,0 +1,156 @@
+[
+  {
+    "command": "git branch",
+    "title": "List or Manage Branches",
+    "description": "The 'git branch' command lists all branches, creates a new branch, or deletes a branch.",
+    "syntax": "git branch [branch_name]",
+    "example": "git branch feature-login",
+    "story": "Jerry is working on a new feature and creates a branch called 'feature-login' using 'git branch'.",
+    "type": "basic",
+    "group": "branch-management",
+    "game": {
+      "hint": "Use 'git branch' followed by a branch name to create a new branch.",
+      "solution": "git branch feature-login"
+    }
+  },
+  {
+    "command": "git branch -r",
+    "title": "Show Remote Branches",
+    "description": "The 'git branch -r' command lists all remote branches.",
+    "syntax": "git branch -r",
+    "example": "git branch -r",
+    "story": "Jerry wants to see all the branches available in the remote repository. He uses 'git branch -r'.",
+    "type": "basic",
+    "group": "branch-management",
+    "game": {
+      "hint": "Use 'git branch -r' to list all remote branches.",
+      "solution": "git branch -r"
+    }
+  },
+  {
+    "command": "git branch -a",
+    "title": "Show All Branches",
+    "description": "The 'git branch -a' command lists both local and remote branches.",
+    "syntax": "git branch -a",
+    "example": "git branch -a",
+    "story": "Tom wants to view all branches, both local and remote, to check the project's structure. He uses 'git branch -a'.",
+    "type": "basic",
+    "group": "branch-management",
+    "game": {
+      "hint": "Use 'git branch -a' to list all branches.",
+      "solution": "git branch -a"
+    }
+  },
+  {
+    "command": "git checkout",
+    "title": "Switch Branches",
+    "description": "The 'git checkout' command switches to a different branch or commit.",
+    "syntax": "git checkout [branch_name]",
+    "example": "git checkout feature-login",
+    "story": "Jerry switches to the 'feature-login' branch to work on the new feature.",
+    "type": "basic",
+    "group": "branch-management",
+    "game": {
+      "hint": "Use 'git checkout' followed by the branch name to switch branches.",
+      "solution": "git checkout feature-login"
+    }
+  },
+  {
+    "command": "git checkout -b",
+    "title": "Create and Switch to a New Branch",
+    "description": "The 'git checkout -b' command creates a new branch and switches to it.",
+    "syntax": "git checkout -b [branch_name]",
+    "example": "git checkout -b new-feature",
+    "story": "Jerry wants to start working on a new feature. He creates and switches to a new branch using 'git checkout -b'.",
+    "type": "basic",
+    "group": "branch-management",
+    "game": {
+      "hint": "Use 'git checkout -b' to create and switch to a new branch.",
+      "solution": "git checkout -b new-feature"
+    }
+  },
+  {
+    "command": "git merge",
+    "title": "Merge Branches",
+    "description": "The 'git merge' command integrates changes from one branch into another.",
+    "syntax": "git merge [branch_name]",
+    "example": "git merge feature-login",
+    "story": "After completing the new feature, Jerry merges the 'feature-login' branch into the main branch.",
+    "type": "intermediate",
+    "group": "branch-management",
+    "game": {
+      "hint": "Use 'git merge' followed by the branch name to merge changes.",
+      "solution": "git merge feature-login"
+    }
+  },
+  {
+    "command": "git branch -d",
+    "title": "Delete a Branch",
+    "description": "The 'git branch -d' command deletes a branch that has been fully merged.",
+    "syntax": "git branch -d [branch_name]",
+    "example": "git branch -d feature-login",
+    "story": "After merging the 'feature-login' branch, Jerry deletes it using 'git branch -d' to keep the repository clean.",
+    "type": "basic",
+    "group": "branch-management",
+    "game": {
+      "hint": "Use 'git branch -d' followed by the branch name to delete it.",
+      "solution": "git branch -d feature-login"
+    }
+  },
+  {
+    "command": "git branch -D",
+    "title": "Force Delete a Branch",
+    "description": "The 'git branch -D' command forcefully deletes a branch, even if it has not been merged.",
+    "syntax": "git branch -D [branch_name]",
+    "example": "git branch -D old-feature",
+    "story": "Jerry wants to delete a branch that is no longer needed, even though it hasn't been merged. He uses 'git branch -D'.",
+    "type": "advanced",
+    "group": "branch-management",
+    "game": {
+      "hint": "Use 'git branch -D' to force delete a branch.",
+      "solution": "git branch -D old-feature"
+    }
+  },
+  {
+    "command": "git branch -m",
+    "title": "Rename a Branch",
+    "description": "The 'git branch -m' command renames the current branch or a specified branch.",
+    "syntax": "git branch -m [new_branch_name]",
+    "example": "git branch -m updated-feature",
+    "story": "Jerry realizes the branch name is unclear. He renames it using 'git branch -m'.",
+    "type": "basic",
+    "group": "branch-management",
+    "game": {
+      "hint": "Use 'git branch -m' to rename the current branch.",
+      "solution": "git branch -m updated-feature"
+    }
+  },
+  {
+    "command": "git push --set-upstream",
+    "title": "Track a Remote Branch",
+    "description": "The 'git push --set-upstream' command sets the current branch to track a remote branch.",
+    "syntax": "git push --set-upstream [remote] [branch_name]",
+    "example": "git push --set-upstream origin feature-login",
+    "story": "Jerry creates a new branch locally and wants to push it to the remote repository. He uses 'git push --set-upstream'.",
+    "type": "intermediate",
+    "group": "branch-management",
+    "game": {
+      "hint": "Use 'git push --set-upstream' to set a branch to track a remote branch.",
+      "solution": "git push --set-upstream origin feature-login"
+    }
+  },
+  {
+    "command": "git rebase",
+    "title": "Reapply Commits",
+    "description": "The 'git rebase' command reapplies commits on top of another base branch.",
+    "syntax": "git rebase [branch]",
+    "example": "git rebase main",
+    "story": "Jerry wants to update his feature branch with changes from the main branch. He uses 'git rebase'.",
+    "type": "advanced",
+    "group": "branch-management",
+    "game": {
+      "hint": "Use 'git rebase' followed by the branch name to reapply commits.",
+      "solution": "git rebase main"
+    }
+  }
+]

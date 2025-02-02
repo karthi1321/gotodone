@@ -1,0 +1,54 @@
+[
+    {
+      "command": "cd",
+      "title": "Change Directory",
+      "description": "The 'cd' command is used to change the current directory in the file system.",
+      "example": "cd /home/jerry/food/cheese",
+      "story": "Jerry is hiding in a folder located at '/home/jerry/food/cheese'. Tom needs to use the 'cd' command to navigate to the folder and find Jerry.",
+      "type": "basic",
+      "group": "file-system",
+      "game": {
+        "hint": "Try using 'cd' followed by the path where Jerry is hiding.",
+        "solution": "cd /home/jerry/food/cheese"
+      }
+    },
+    {
+      "command": "pwd",
+      "title": "Print Working Directory",
+      "description": "The 'pwd' command prints the current working directory.",
+      "example": "pwd",
+      "story": "Tom wants to know where he is in the file system. Using 'pwd' will tell him his current location.",
+      "type": "basic",
+      "group": "file-system",
+      "game": {
+        "hint": "Use 'pwd' to check the current directory.",
+        "solution": "pwd"
+      }
+    },
+    {
+      "command": "ls",
+      "title": "List Files",
+      "description": "The 'ls' command lists all files and directories in the current directory.",
+      "example": "ls",
+      "story": "Tom wants to see what files are in the current directory. Using 'ls' will list all files and directories.",
+      "type": "basic",
+      "group": "file-system",
+      "game": {
+        "hint": "Use 'ls' to list the files in the current directory.",
+        "solution": "ls"
+      }
+    },
+    {
+        "command": "karthick",
+        "title": "List  hi karthick",
+        "description": "The 'ls' command lists all files and directories in the current directory.",
+        "example": "ls",
+        "story": "Tom wants to see what files are in the current directory. Using 'ls' will list all files and directories.",
+        "type": "basic",
+        "group": "file-system",
+        "game": {
+          "hint": "Use 'ls' to list the files in the current directory.",
+          "solution": "ls"
+        }
+      }
+]

@@ -1,0 +1,62 @@
+import 'package:flutter_tts/flutter_tts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class TtsUtils {
+  static final FlutterTts flutterTts = FlutterTts();
+  static const String defaultLanguage = 'en-US';
+  static const double defaultPitch = 0.8;
+  static const double defaultSpeechRate = 0.6;
+
+  /// Getter for language
+   static Future<String> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString('language') ?? defaultLanguage;
+  }
+
+  /// Getter for pitch
+  static Future<double> getPitch() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getDouble('pitch') ?? defaultPitch;
+  }
+
+  /// Getter for speech rate
+  static Future<double> getSpeechRate() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getDouble('speechRate') ?? defaultSpeechRate;
+  }
+
+  /// Setter for language
+  static Future<void> setLanguage(String language) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('language', language);
+  }
+
+  /// Setter for pitch
+  static Future<void> setPitch(double pitch) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setDouble('pitch', pitch);
+  }
+
+  /// Setter for speech rate
+  static Future<void> setSpeechRate(double rate) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setDouble('speechRate', rate);
+  }
+
+  /// Method to speak with current settings
+  static Future<void> speak(String text) async {
+    final language = await getLanguage();
+    final pitch = await getPitch();
+    final speechRate = await getSpeechRate();
+
+    await flutterTts.setLanguage(language);
+    await flutterTts.setPitch(pitch);
+    await flutterTts.setSpeechRate(speechRate);
+    await flutterTts.speak(text);
+  }
+
+  /// Method to stop speaking
+  static Future<void> stop() async {
+    await flutterTts.stop();
+  }
+}

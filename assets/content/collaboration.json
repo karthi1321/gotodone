@@ -1,0 +1,143 @@
+[
+    {
+      "command": "git pull",
+      "title": "Fetch and Merge Changes",
+      "description": "The 'git pull' command fetches updates from the remote repository and merges them into the current branch.",
+      "syntax": "git pull [remote] [branch_name]",
+      "example": "git pull origin main",
+      "story": "Alice wants to update her local branch with the latest changes from the remote main branch. She uses 'git pull'.",
+      "type": "basic",
+      "group": "collaboration",
+      "game": {
+        "hint": "Use 'git pull' to fetch and merge updates from the remote branch.",
+        "solution": "git pull origin main"
+      }
+    },
+    {
+      "command": "git push",
+      "title": "Upload Changes to Remote",
+      "description": "The 'git push' command uploads your local branch commits to the remote repository.",
+      "syntax": "git push [remote] [branch_name]",
+      "example": "git push origin feature-login",
+      "story": "Alice finishes her work on the 'feature-login' branch and pushes it to the remote repository using 'git push'.",
+      "type": "basic",
+      "group": "collaboration",
+      "game": {
+        "hint": "Use 'git push' to upload your local changes to the remote branch.",
+        "solution": "git push origin feature-login"
+      }
+    },
+    {
+      "command": "git fetch",
+      "title": "Retrieve Updates Without Merging",
+      "description": "The 'git fetch' command retrieves updates from the remote repository without merging them into your current branch.",
+      "syntax": "git fetch [remote]",
+      "example": "git fetch origin",
+      "story": "Alice fetches updates from the remote repository to inspect changes before merging them locally.",
+      "type": "basic",
+      "group": "collaboration",
+      "game": {
+        "hint": "Use 'git fetch' to download changes from the remote without applying them.",
+        "solution": "git fetch origin"
+      }
+    },
+    {
+      "command": "git pull --rebase",
+      "title": "Fetch and Reapply Commits",
+      "description": "The 'git pull --rebase' command fetches updates from the remote repository and reapplies your local commits on top.",
+      "syntax": "git pull --rebase [remote] [branch_name]",
+      "example": "git pull --rebase origin main",
+      "story": "Alice wants to reapply her local changes after fetching updates from the remote repository to avoid unnecessary merge commits. She uses 'git pull --rebase'.",
+      "type": "intermediate",
+      "group": "collaboration",
+      "game": {
+        "hint": "Use 'git pull --rebase' to fetch updates and reapply your commits.",
+        "solution": "git pull --rebase origin main"
+      }
+    },
+    {
+      "command": "git push --force",
+      "title": "Force Push Changes",
+      "description": "The 'git push --force' command forcefully overwrites the remote branch with your local changes.",
+      "syntax": "git push --force [remote] [branch_name]",
+      "example": "git push --force origin feature-login",
+      "story": "Alice accidentally made a mistake in her commits and rewrote history. She uses 'git push --force' to update the remote repository.",
+      "type": "advanced",
+      "group": "collaboration",
+      "game": {
+        "hint": "Use 'git push --force' to overwrite the remote branch with your changes.",
+        "solution": "git push --force origin feature-login"
+      }
+    },
+    {
+      "command": "git pull origin main",
+      "title": "Resolve Conflicts While Pulling",
+      "description": "Sometimes conflicts occur during a 'git pull'. You need to resolve them manually before completing the merge.",
+      "syntax": "git pull origin main",
+      "example": "git pull origin main",
+      "story": "While pulling the latest updates, Alice encounters conflicts. She resolves the conflicts and completes the merge.",
+      "type": "intermediate",
+      "group": "collaboration",
+      "game": {
+        "hint": "Use 'git pull' and resolve conflicts to update your branch.",
+        "solution": "git pull origin main"
+      }
+    },
+    {
+      "command": "git remote -v",
+      "title": "View Remote Repositories",
+      "description": "The 'git remote -v' command displays the URLs of remote repositories associated with your project.",
+      "syntax": "git remote -v",
+      "example": "git remote -v",
+      "story": "Alice wants to see all the remote repositories linked to her project, so she uses 'git remote -v'.",
+      "type": "basic",
+      "group": "collaboration",
+      "game": {
+        "hint": "Use 'git remote -v' to list remote repository URLs.",
+        "solution": "git remote -v"
+      }
+    },
+    {
+      "command": "git push --tags",
+      "title": "Push All Tags",
+      "description": "The 'git push --tags' command uploads all local tags to the remote repository.",
+      "syntax": "git push --tags [remote]",
+      "example": "git push --tags origin",
+      "story": "Alice creates several tags for versioning and pushes them all to the remote repository using 'git push --tags'.",
+      "type": "intermediate",
+      "group": "collaboration",
+      "game": {
+        "hint": "Use 'git push --tags' to upload all tags to the remote repository.",
+        "solution": "git push --tags origin"
+      }
+    },
+    {
+      "command": "git fetch --all",
+      "title": "Fetch All Remotes",
+      "description": "The 'git fetch --all' command retrieves updates from all remote repositories linked to the project.",
+      "syntax": "git fetch --all",
+      "example": "git fetch --all",
+      "story": "Alice wants to fetch updates from all remotes in her project. She uses 'git fetch --all'.",
+      "type": "intermediate",
+      "group": "collaboration",
+      "game": {
+        "hint": "Use 'git fetch --all' to download updates from all remotes.",
+        "solution": "git fetch --all"
+      }
+    },
+    {
+      "command": "git remote add",
+      "title": "Add a Remote Repository",
+      "description": "The 'git remote add' command links a new remote repository to your project.",
+      "syntax": "git remote add [name] [url]",
+      "example": "git remote add origin https://github.com/user/repo.git",
+      "story": "Alice clones a project but wants to add another remote for her forked repository. She uses 'git remote add'.",
+      "type": "basic",
+      "group": "collaboration",
+      "game": {
+        "hint": "Use 'git remote add' to link a new remote repository.",
+        "solution": "git remote add origin https://github.com/user/repo.git"
+      }
+    }
+  ]
+  

@@ -1,0 +1,114 @@
+[
+  {
+    "title": "Introduction to Git",
+    "content": "Git is a powerful yet simple tool designed for tracking changes in files during software development. Imagine you're writing a book with your friends, and everyone is making changes at the same time. Git acts as a notebook that records all the changes, so you can see who changed what and when. It also helps avoid accidental overwriting and keeps everyone on the same page. Git makes collaboration seamless and efficient, especially when working on large projects.",
+    "group": "intro"
+  },
+  {
+    "title": "What is Version Control?",
+    "content": "Version control is like a time machine for your projects. It keeps a record of all changes made to your files, allowing you to go back to previous versions whenever needed. For example, if you’re working on a document and accidentally delete an important section, version control lets you retrieve the older version with the missing content. Git is a popular version control tool used by developers to manage their code and collaborate with others effectively.",
+    "group": "intro"
+  },
+  {
+    "title": "Why Use Git?",
+    "content": "Git is widely used because it solves many common problems in software development. It allows you to:\n\n1. **Work as a Team**: Multiple people can work on the same project without conflicts.\n2. **Track Every Change**: Every update is recorded, so you can revert to earlier versions if needed.\n3. **Experiment Safely**: Create 'branches' to test new ideas without affecting the main project.\n4. **Save Time and Effort**: Automates merging changes and prevents data loss.\n\nFor example, imagine building a website where one team member works on the homepage, while another works on the contact page. Git ensures that their changes merge smoothly without overwriting each other’s work.",
+    "group": "intro"
+  },
+  {
+    "title": "How Does Git Work?",
+    "content": "Git works by creating snapshots of your project whenever you save changes (called commits). Each commit acts as a checkpoint, allowing you to return to it if something goes wrong. The process typically involves:\n\n1. **Staging**: Selecting the changes you want to save.\n2. **Committing**: Recording the changes with a message explaining what you did.\n3. **Pushing**: Uploading your changes to a shared repository so others can see them.\n\nThink of Git as a photo album for your project, where every commit is a photo capturing the project's state at that moment.",
+    "group": "intro"
+  },
+  {
+    "title": "Purpose of Git in Software Development",
+    "content": "The primary purpose of Git is to simplify collaboration and ensure code quality. It achieves this by:\n\n- **Centralized Collaboration**: Developers share a common 'repository' where they can push their work.\n- **Conflict Resolution**: Git helps merge changes from multiple contributors, even if they worked on the same files.\n- **History Tracking**: Every change is saved with details like who made it and why, making debugging easier.\n- **Backup System**: If something goes wrong, you can always go back to a previous version.\n\nExample: A mobile app development team can use Git to ensure that new features (like a login page) and bug fixes (like fixing a crash) are added without disrupting each other's work.",
+    "group": "intro"
+  },
+  {
+    "title": "Real-Life Example of Using Git",
+    "content": "Imagine a group of friends working on a cookbook. Alice writes the appetizer recipes, Bob writes the main courses, and Carol writes desserts. Using Git:\n\n1. Each friend works on their section independently.\n2. They save their progress (commits) and upload it to a shared folder (repository).\n3. If Bob accidentally deletes a recipe, he can recover it from a previous commit.\n4. When they combine their sections, Git automatically merges their work, highlighting any conflicts for review.\n\nGit ensures their cookbook project is organized, collaborative, and safe from accidental loss.",
+    "group": "intro"
+  },
+  {
+    "title": "Installing Git",
+    "content": "To start using Git, you need to install it on your system. Here’s how to do it:\n\n**Windows**:\n1. Download the Git installer from [git-scm.com](https://git-scm.com/).\n2. Run the installer and follow the setup instructions.\n3. During installation, select options like the default text editor and whether to add Git to the system PATH.\n\n**macOS**:\n1. Install Xcode Command Line Tools by running `xcode-select --install` in the Terminal.\n2. Alternatively, use Homebrew: `brew install git`.\n\n**Linux**:\n1. Use your package manager:\n   - Debian/Ubuntu: `sudo apt update && sudo apt install git`\n   - Fedora: `sudo dnf install git`\n   - Arch: `sudo pacman -S git`\n\nOnce installed, verify the installation by running `git --version` in your terminal.",
+    "group": ""
+  },
+  {
+    "title": "Configuring Git for the First Time",
+    "content": "After installing Git, you need to configure it. These settings ensure that your commits are attributed correctly and that Git behaves as you expect.\n\nRun the following commands in your terminal:\n\n1. **Set Your Name**:\n   ```bash\n   git config --global user.name \"Your Name\"\n   ```\n\n2. **Set Your Email**:\n   ```bash\n   git config --global user.email \"your.email@example.com\"\n   ```\n\n3. **Set Default Editor** (optional):\n   ```bash\n   git config --global core.editor \"code --wait\"  # For VS Code\n   git config --global core.editor \"nano\"        # For Nano editor\n   ```\n\n4. **Set Default Branch Name** (recommended):\n   ```bash\n   git config --global init.defaultBranch main\n   ```\n\nThese settings are saved in the `.gitconfig` file in your home directory and are used across all your Git repositories.",
+    "group": "settings"
+  },
+  {
+    "title": "Generating SSH Keys for Git",
+    "content": "If you’re using Git with remote repositories like GitHub or GitLab, it’s recommended to authenticate using SSH keys. Here’s how to generate and add an SSH key:\n\n1. **Generate SSH Key**:\n   ```bash\n   ssh-keygen -t ed25519 -C \"your.email@example.com\"\n   ```\n   - Press Enter to accept the default file location.\n   - Set a passphrase (optional).\n\n2. **Add SSH Key to SSH Agent**:\n   ```bash\n   eval \"$(ssh-agent -s)\"\n   ssh-add ~/.ssh/id_ed25519\n   ```\n\n3. **Add the Key to GitHub/GitLab**:\n   - Copy the public key:\n     ```bash\n     cat ~/.ssh/id_ed25519.pub\n     ```\n   - Paste it into your GitHub/GitLab account under SSH keys in settings.\n\n4. **Test the Connection**:\n   ```bash\n   ssh -T git@github.com  # For GitHub\n   ssh -T git@gitlab.com  # For GitLab\n   ```\n\nThis ensures secure and seamless communication with your remote repositories.",
+    "group": "settings"
+  },
+  {
+    "title": "Setting Up a Global Git Ignore",
+    "content": "A global `.gitignore` file is useful for ignoring files and patterns across all your repositories, such as IDE settings or temporary files.\n\n1. **Create a Global Ignore File**:\n   ```bash\n   touch ~/.gitignore_global\n   ```\n\n2. **Add Patterns to Ignore**:\n   Open the file and add patterns like:\n   ```\n   *.log\n   *.tmp\n   .DS_Store\n   .vscode/\n   ```\n\n3. **Configure Git to Use the File**:\n   ```bash\n   git config --global core.excludesfile ~/.gitignore_global\n   ```\n\nFrom now on, these patterns will be ignored in all your repositories.",
+    "group": "settings"
+  },
+  {
+    "title": "Verifying Git Configuration",
+    "content": "You can verify your current Git configuration to ensure everything is set up correctly:\n\n1. **View All Configurations**:\n   ```bash\n   git config --list\n   ```\n   This displays all global and local settings.\n\n2. **Check Specific Settings**:\n   - Username:\n     ```bash\n     git config user.name\n     ```\n   - Email:\n     ```bash\n     git config user.email\n     ```\n\n3. **Edit Global Configuration**:\n   Open the global configuration file directly:\n   ```bash\n   nano ~/.gitconfig\n   ```\n\nReview and update settings as needed to ensure they align with your requirements.",
+    "group": "settings"
+  },
+  {
+    "title": "Cloning a Repository",
+    "content": "To work on an existing project, you can clone its repository to your local system:\n\n1. **Clone a Repository**:\n   ```bash\n   git clone https://github.com/username/repository.git\n   ```\n\n2. **Clone Using SSH**:\n   ```bash\n   git clone git@github.com:username/repository.git\n   ```\n\n3. **Change to the Project Directory**:\n   ```bash\n   cd repository\n   ```\n\nThis creates a local copy of the repository, including its entire history. You can now make changes and push them back to the remote repository.",
+    "group": "settings"
+  },
+
+  {
+    "title": "Understanding Merge Conflicts",
+    "content": "Merge conflicts occur when Git cannot automatically merge changes because the same lines in a file have been modified differently in two branches. This usually happens during a 'git pull' or 'git merge'. Identifying and resolving these conflicts ensures the project remains consistent and error-free.",
+    "group": "merge-conflicts"
+  },
+  {
+    "title": "Identifying Merge Conflicts",
+    "content": "When a conflict arises, Git halts the merge process and marks the conflicting files. You can use the following commands to identify these files:\n\n1. **Run 'git status'**: Displays the list of files with conflicts.\n2. **Check Conflict Markers in Files**: Look for lines starting with '<<<<<<<', '=======', and '>>>>>>>'. These indicate the conflicting changes.\n\nFor example, if two developers modify the same function differently, Git flags it for manual resolution.",
+    "group": "merge-conflicts"
+  },
+  {
+    "title": "Viewing Conflict Details",
+    "content": "To understand the differences causing conflicts, use the following:\n\n1. **'git diff'**: Displays detailed differences between conflicting changes.\n2. **Open the File in an Editor**: View the changes directly in your text editor.\n\nThis step helps you decide how to resolve the conflicts based on the changes.",
+    "group": "merge-conflicts"
+  },
+  {
+    "title": "Resolving Conflicts Manually",
+    "content": "To resolve conflicts:\n\n1. Open the conflicting file in a text editor.\n2. Locate the conflict markers:\n   - '<<<<<<< HEAD' indicates your changes.\n   - '>>>>>>>' indicates incoming changes from the other branch.\n   - '=======' separates the two versions.\n3. Edit the file to keep the desired changes and remove conflict markers.\n4. Save the file.\n\nManual resolution ensures you choose the correct version for your project.",
+    "group": "merge-conflicts"
+  },
+  {
+    "title": "Staging Resolved Files",
+    "content": "After resolving conflicts in a file, stage it for commit using:\n\n```bash\ngit add [file_name]\n```\n\nFor example:\n\n```bash\ngit add main.py\n```\n\nStaging confirms that you have resolved the conflict and are ready to commit the changes.",
+    "group": "merge-conflicts"
+  },
+  {
+    "title": "Committing the Merge",
+    "content": "Once all conflicts are resolved and staged, complete the merge with:\n\n```bash\ngit commit\n```\n\nInclude a message explaining the merge resolution, like:\n\n```bash\ngit commit -m \"Resolved merge conflicts in main.py\"\n```\n\nThis records the merge in your project's history.",
+    "group": "merge-conflicts"
+  },
+  {
+    "title": "Using Merge Tools",
+    "content": "Git provides tools to assist in resolving conflicts. To use a merge tool, run:\n\n```bash\ngit mergetool\n```\n\nThis opens a graphical or terminal-based tool (depending on your setup) to help resolve conflicts visually. Tools like KDiff3, Meld, or VS Code can be integrated for this purpose.",
+    "group": "merge-conflicts"
+  },
+  {
+    "title": "Aborting a Merge",
+    "content": "If the merge is too complicated or you want to cancel it, you can abort the merge process using:\n\n```bash\ngit merge --abort\n```\n\nThis reverts your repository to the state it was in before the merge started, allowing you to try again later.",
+    "group": "merge-conflicts"
+  },
+  {
+    "title": "Resolving Conflicts During a Pull",
+    "content": "Conflicts often occur during a 'git pull'. After resolving the conflicts manually, continue the process with:\n\n1. **Stage Resolved Files**:\n   ```bash\n   git add [file_name]\n   ```\n\n2. **Complete the Pull**:\n   ```bash\n   git commit\n   ```\n\nThis ensures the pull operation completes successfully after resolving conflicts.",
+    "group": "merge-conflicts"
+  },
+  {
+    "title": "Best Practices for Avoiding Conflicts",
+    "content": "To minimize merge conflicts:\n\n1. **Pull Changes Frequently**: Keep your local branch updated with the latest remote changes.\n2. **Communicate with Team Members**: Coordinate changes to avoid modifying the same files simultaneously.\n3. **Use Small Commits**: Frequent commits make it easier to identify and resolve conflicts.\n4. **Leverage Branches**: Work on separate branches for new features or bug fixes.\n\nFollowing these practices reduces the likelihood of conflicts and simplifies resolution when they occur.",
+    "group": "merge-conflicts"
+  }
+
+]

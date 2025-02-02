@@ -1,0 +1,14 @@
+Linux: 
+Command Explorer: Include an interactive terminal-like interface where users can test commands and see output simulations.
+Command Categories: Group commands into categories (e.g., File Management, Networking, Permissions) for better navigation.
+Command Details: Provide examples, syntax, and use cases for each comman
+
+Visual and Animated UI
+Use Flutter animations (flutter_animator, rive) to make the app visually engaging.
+
+
+feature :
+Cheat Sheets
+Daily Linux Tips
+Allow users to bookmark or save lessons for offline access
+mini-lessons with screenshots or diagrams explaining complex Linux concepts like permissions (chmod), shell scripting, etc.

@@ -1,0 +1,172 @@
+[
+  {
+    "command": "cd",
+    "title": "Change Directory",
+    "description": "The 'cd' command is used to change the current directory in the file system.",
+    "example": "cd /home/jerry/food/cheese",
+    "story": "Jerry is hiding in a folder located at '/home/jerry/food/cheese'. Tom needs to use the 'cd' command to navigate to the folder and find Jerry.",
+    "type": "basic",
+    "group": "file-system",
+    "game": {
+      "hint": "Try using 'cd' followed by the path where Jerry is hiding.",
+      "solution": "cd /home/jerry/food/cheese"
+    }
+  },
+  {
+    "command": "pwd",
+    "title": "Print Working Directory",
+    "description": "The 'pwd' command prints the current working directory.",
+    "example": "pwd",
+    "story": "Tom wants to know where he is in the file system. Using 'pwd' will tell him his current location.",
+    "type": "basic",
+    "group": "file-system",
+    "game": {
+      "hint": "Use 'pwd' to check the current directory.",
+      "solution": "pwd"
+    }
+  },
+  {
+    "command": "ls",
+    "title": "List Files",
+    "description": "The 'ls' command lists all files and directories in the current directory.",
+    "example": "ls",
+    "story": "Tom wants to see what files are in the current directory. Using 'ls' will list all files and directories.",
+    "type": "basic",
+    "group": "file-system",
+    "game": {
+      "hint": "Use 'ls' to list the files in the current directory.",
+      "solution": "ls"
+    }
+  },
+  {
+    "command": "mkdir",
+    "title": "Make Directory",
+    "description": "The 'mkdir' command creates a new directory in the file system.",
+    "example": "mkdir /home/jerry/nest",
+    "story": "Jerry needs a new hideout, so he creates a directory named 'nest' using 'mkdir'.",
+    "type": "basic",
+    "group": "file-system",
+    "game": {
+      "hint": "Use 'mkdir' followed by the directory name to create it.",
+      "solution": "mkdir /home/jerry/nest"
+    }
+  },
+  {
+    "command": "rm",
+    "title": "Remove File/Directory",
+    "description": "The 'rm' command removes files or directories. Use 'rm -r' to remove directories recursively.",
+    "example": "rm cheese.txt",
+    "story": "Tom finds an old cheese file and wants to clean up. He uses 'rm' to remove 'cheese.txt'.",
+    "type": "basic",
+    "group": "file-system",
+    "game": {
+      "hint": "Use 'rm' followed by the file name to delete it.",
+      "solution": "rm cheese.txt"
+    }
+  },
+  {
+    "command": "cp",
+    "title": "Copy Files/Directories",
+    "description": "The 'cp' command copies files or directories from one location to another.",
+    "example": "cp /home/jerry/cheese.txt /home/tom/",
+    "story": "Jerry wants to share a cheese file with Tom, so he uses 'cp' to copy it to Tom's folder.",
+    "type": "basic",
+    "group": "file-system",
+    "game": {
+      "hint": "Use 'cp' followed by the source file and destination folder.",
+      "solution": "cp /home/jerry/cheese.txt /home/tom/"
+    }
+  },
+  {
+    "command": "mv",
+    "title": "Move Files/Directories",
+    "description": "The 'mv' command moves or renames files and directories.",
+    "example": "mv /home/jerry/cheese.txt /home/tom/",
+    "story": "Jerry decides to move his cheese file to Tom's folder. He uses 'mv' to transfer it.",
+    "type": "basic",
+    "group": "file-system",
+    "game": {
+      "hint": "Use 'mv' followed by the source file and destination folder.",
+      "solution": "mv /home/jerry/cheese.txt /home/tom/"
+    }
+  },
+  {
+    "command": "touch",
+    "title": "Create a New File",
+    "description": "The 'touch' command creates an empty file or updates the timestamp of an existing file.",
+    "example": "touch cheese.txt",
+    "story": "Jerry needs a new cheese file to store recipes, so he uses 'touch' to create an empty file named 'cheese.txt'.",
+    "type": "basic",
+    "group": "file-system",
+    "game": {
+      "hint": "Use 'touch' followed by the file name to create it.",
+      "solution": "touch cheese.txt"
+    }
+  },
+  {
+    "command": "cat",
+    "title": "Concatenate and Display File Content",
+    "description": "The 'cat' command displays the content of a file and can concatenate multiple files.",
+    "example": "cat cheese.txt",
+    "story": "Tom wants to read the contents of Jerry's cheese file, so he uses 'cat' to display it.",
+    "type": "basic",
+    "group": "file-system",
+    "game": {
+      "hint": "Use 'cat' followed by the file name to view its content.",
+      "solution": "cat cheese.txt"
+    }
+  },
+  {
+    "command": "rmdir",
+    "title": "Remove Directory",
+    "description": "The 'rmdir' command removes empty directories from the file system.",
+    "example": "rmdir /home/jerry/nest",
+    "story": "Jerry no longer needs his old nest, so he uses 'rmdir' to remove the empty directory.",
+    "type": "basic",
+    "group": "file-system",
+    "game": {
+      "hint": "Use 'rmdir' followed by the directory name to remove it.",
+      "solution": "rmdir /home/jerry/nest"
+    }
+  },
+  {
+    "command": "echo",
+    "title": "Print Text to Terminal",
+    "description": "The 'echo' command displays a line of text or a variable value in the terminal.",
+    "example": "echo Hello, Tom!",
+    "story": "Jerry wants to send a message to Tom. He uses 'echo' to print 'Hello, Tom!' on the screen.",
+    "type": "basic",
+    "group": "shell",
+    "game": {
+      "hint": "Use 'echo' followed by the message you want to display.",
+      "solution": "echo Hello, Tom!"
+    }
+  },
+  {
+    "command": "whoami",
+    "title": "Display Current User",
+    "description": "The 'whoami' command displays the current logged-in username.",
+    "example": "whoami",
+    "story": "Tom is curious to know who is currently logged in. Using 'whoami', he can find out that it's Jerry.",
+    "type": "basic",
+    "group": "user-management",
+    "game": {
+      "hint": "Use 'whoami' to find out the current username.",
+      "solution": "whoami"
+    }
+  },
+  {
+    "command": "uname",
+    "title": "Display System Information",
+    "description": "The 'uname' command shows basic information about the system. Use 'uname -a' for detailed info.",
+    "example": "uname -a",
+    "story": "Tom wants to know more about the system he's using. He runs 'uname -a' to get all the details.",
+    "type": "basic",
+    "group": "system-info",
+    "game": {
+      "hint": "Use 'uname' with the '-a' option for detailed system info.",
+      "solution": "uname -a"
+    }
+  }
+  
+]

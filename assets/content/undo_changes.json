@@ -1,0 +1,100 @@
+[
+  {
+    "command": "git restore",
+    "title": "Undo Changes in the Working Directory",
+    "description": "The 'git restore' command is used to discard uncommitted changes in the working directory.",
+    "syntax": "git restore [file]",
+    "example": "git restore file.txt",
+    "story": "Jerry realizes he made a mistake in 'file.txt'. He uses 'git restore' to undo the changes and revert to the last committed version.",
+    "type": "basic",
+    "group": "undo-changes",
+    "game": {
+      "hint": "Use 'git restore' followed by the file name to discard uncommitted changes.",
+      "solution": "git restore file.txt"
+    }
+  },
+  {
+    "command": "git restore --staged",
+    "title": "Unstage Changes",
+    "description": "The 'git restore --staged' command removes changes from the staging area without affecting the working directory.",
+    "syntax": "git restore --staged [file]",
+    "example": "git restore --staged file.txt",
+    "story": "Jerry accidentally staged 'file.txt' but wants to make more edits. He uses 'git restore --staged' to unstage it.",
+    "type": "basic",
+    "group": "undo-changes",
+    "game": {
+      "hint": "Use 'git restore --staged' to unstage changes from the index.",
+      "solution": "git restore --staged file.txt"
+    }
+  },
+  {
+    "command": "git reset",
+    "title": "Undo Commits",
+    "description": "The 'git reset' command undoes commits and optionally resets changes in the working directory and staging area.",
+    "syntax": "git reset [--soft|--mixed|--hard] [commit]",
+    "example": "git reset --soft HEAD~1",
+    "story": "Jerry accidentally committed changes that he didn't want. He uses 'git reset' to undo the last commit while keeping the changes.",
+    "type": "intermediate",
+    "group": "undo-changes",
+    "game": {
+      "hint": "Use 'git reset' with the appropriate option to undo commits.",
+      "solution": "git reset --soft HEAD~1"
+    }
+  },
+  {
+    "command": "git revert",
+    "title": "Revert a Commit",
+    "description": "The 'git revert' command creates a new commit that undoes changes from a previous commit.",
+    "syntax": "git revert [commit]",
+    "example": "git revert abc123",
+    "story": "Tom notices a previous commit broke the project. He uses 'git revert' to undo the changes introduced in that commit.",
+    "type": "intermediate",
+    "group": "undo-changes",
+    "game": {
+      "hint": "Use 'git revert' followed by the commit hash to create a reversing commit.",
+      "solution": "git revert abc123"
+    }
+  },
+  {
+    "command": "git clean",
+    "title": "Remove Untracked Files",
+    "description": "The 'git clean' command removes untracked files and directories from the working directory.",
+    "syntax": "git clean [-d] [-f]",
+    "example": "git clean -d -f",
+    "story": "Jerry has leftover files from an old experiment. He uses 'git clean' to remove them from the working directory.",
+    "type": "intermediate",
+    "group": "undo-changes",
+    "game": {
+      "hint": "Use 'git clean' to remove untracked files. Add '-d' to include directories.",
+      "solution": "git clean -d -f"
+    }
+  },
+  {
+    "command": "git restore --source",
+    "title": "Restore a File to a Previous Commit",
+    "description": "The 'git restore --source' command restores a file to its state at a specific commit.",
+    "syntax": "git restore --source [commit] [file]",
+    "example": "git restore --source HEAD~1 file.txt",
+    "story": "Tom wants to restore 'file.txt' to its state in the last commit. He uses 'git restore --source' to do so.",
+    "type": "intermediate",
+    "group": "undo-changes",
+    "game": {
+      "hint": "Use 'git restore --source' followed by the commit hash and file name to restore it.",
+      "solution": "git restore --source HEAD~1 file.txt"
+    }
+  },
+  {
+    "command": "git reset HEAD~1",
+    "title": "Undo the Last Commit (Keep Changes)",
+    "description": "This command undoes the last commit while keeping the changes in the working directory and staging area.",
+    "syntax": "git reset HEAD~1",
+    "example": "git reset HEAD~1",
+    "story": "Jerry committed the wrong changes and needs to rework them. He uses 'git reset HEAD~1' to undo the commit but keep the changes.",
+    "type": "intermediate",
+    "group": "undo-changes",
+    "game": {
+      "hint": "Use 'git reset HEAD~1' to undo the last commit but keep your changes.",
+      "solution": "git reset HEAD~1"
+    }
+  }
+]

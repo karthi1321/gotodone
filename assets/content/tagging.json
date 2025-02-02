@@ -1,0 +1,128 @@
+[
+  {
+    "command": "git tag",
+    "title": "List Tags",
+    "description": "The 'git tag' command lists all tags in the repository.",
+    "syntax": "git tag",
+    "example": "git tag",
+    "story": "Jerry wants to see all the tags available in the repository. He uses 'git tag' to list them.",
+    "type": "basic",
+    "group": "tagging",
+    "game": {
+      "hint": "Use 'git tag' to view all tags in the repository.",
+      "solution": "git tag"
+    }
+  },
+  {
+    "command": "git tag [tag_name]",
+    "title": "Create a Lightweight Tag",
+    "description": "The 'git tag [tag_name]' command creates a lightweight tag pointing to the current commit.",
+    "syntax": "git tag [tag_name]",
+    "example": "git tag v1.0",
+    "story": "Tom wants to mark the current commit as version 1.0. He uses 'git tag v1.0' to create a lightweight tag.",
+    "type": "basic",
+    "group": "tagging",
+    "game": {
+      "hint": "Use 'git tag' followed by the tag name to create a lightweight tag.",
+      "solution": "git tag v1.0"
+    }
+  },
+  {
+    "command": "git tag -a [tag_name] -m '[message]'",
+    "title": "Create an Annotated Tag",
+    "description": "The 'git tag -a' command creates an annotated tag with a message, author, and timestamp.",
+    "syntax": "git tag -a [tag_name] -m '[message]'",
+    "example": "git tag -a v1.0 -m 'Release version 1.0'",
+    "story": "Jerry wants to create a tag with a description for version 1.0. He uses 'git tag -a v1.0 -m' to include additional details.",
+    "type": "intermediate",
+    "group": "tagging",
+    "game": {
+      "hint": "Use 'git tag -a' followed by a tag name and message to create an annotated tag.",
+      "solution": "git tag -a v1.0 -m 'Release version 1.0'"
+    }
+  },
+  {
+    "command": "git show [tag_name]",
+    "title": "View Tag Details",
+    "description": "The 'git show' command displays detailed information about a specific tag, including the commit it points to.",
+    "syntax": "git show [tag_name]",
+    "example": "git show v1.0",
+    "story": "Tom wants to see the details of the 'v1.0' tag. He uses 'git show' to inspect it.",
+    "type": "basic",
+    "group": "tagging",
+    "game": {
+      "hint": "Use 'git show' followed by the tag name to view its details.",
+      "solution": "git show v1.0"
+    }
+  },
+  {
+    "command": "git tag -d [tag_name]",
+    "title": "Delete a Tag",
+    "description": "The 'git tag -d' command deletes a tag from the local repository.",
+    "syntax": "git tag -d [tag_name]",
+    "example": "git tag -d v1.0",
+    "story": "Jerry accidentally created a tag with the wrong name. He uses 'git tag -d' to delete it locally.",
+    "type": "basic",
+    "group": "tagging",
+    "game": {
+      "hint": "Use 'git tag -d' followed by the tag name to delete it locally.",
+      "solution": "git tag -d v1.0"
+    }
+  },
+  {
+    "command": "git push [remote] [tag_name]",
+    "title": "Push a Tag to a Remote Repository",
+    "description": "The 'git push' command uploads a specific tag to a remote repository.",
+    "syntax": "git push [remote] [tag_name]",
+    "example": "git push origin v1.0",
+    "story": "Tom created a tag for version 1.0 and wants to share it with the team. He uses 'git push origin v1.0'.",
+    "type": "intermediate",
+    "group": "tagging",
+    "game": {
+      "hint": "Use 'git push' followed by the remote name and tag name to upload a tag.",
+      "solution": "git push origin v1.0"
+    }
+  },
+  {
+    "command": "git push --tags",
+    "title": "Push All Tags",
+    "description": "The 'git push --tags' command uploads all tags to the remote repository.",
+    "syntax": "git push --tags",
+    "example": "git push --tags",
+    "story": "Jerry created multiple tags for different releases and wants to share them all. He uses 'git push --tags' to upload them.",
+    "type": "intermediate",
+    "group": "tagging",
+    "game": {
+      "hint": "Run 'git push --tags' to upload all tags to the remote repository.",
+      "solution": "git push --tags"
+    }
+  },
+  {
+    "command": "git tag -f [tag_name] [commit]",
+    "title": "Force Update a Tag",
+    "description": "The 'git tag -f' command updates an existing tag to point to a different commit.",
+    "syntax": "git tag -f [tag_name] [commit]",
+    "example": "git tag -f v1.0 abc123",
+    "story": "Jerry realizes the 'v1.0' tag points to the wrong commit. He uses 'git tag -f' to correct it.",
+    "type": "advanced",
+    "group": "tagging",
+    "game": {
+      "hint": "Use 'git tag -f' followed by the tag name and commit hash to force update it.",
+      "solution": "git tag -f v1.0 abc123"
+    }
+  },
+  {
+    "command": "git push origin :refs/tags/[tag_name]",
+    "title": "Delete a Remote Tag",
+    "description": "The 'git push origin :refs/tags/[tag_name]' command removes a tag from the remote repository.",
+    "syntax": "git push origin :refs/tags/[tag_name]",
+    "example": "git push origin :refs/tags/v1.0",
+    "story": "Jerry accidentally pushed a tag to the remote repository and wants to delete it. He uses 'git push origin :refs/tags/v1.0' to remove it.",
+    "type": "advanced",
+    "group": "tagging",
+    "game": {
+      "hint": "Use 'git push origin :refs/tags/[tag_name]' to delete a tag from the remote repository.",
+      "solution": "git push origin :refs/tags/v1.0"
+    }
+  }
+]

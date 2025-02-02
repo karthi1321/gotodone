@@ -1,0 +1,162 @@
+[
+    {
+        "question": "What is Git in one word?",
+        "answer": "Version-control."
+    },
+    {
+        "question": "Is Git easy to learn?",
+        "answer": "Yes, Git is relatively easy to learn, especially with beginner-friendly tutorials and practice."
+    },
+    {
+        "question": "What are the basic Git commands everyone should know?",
+        "answer": "Some essential Git commands include 'git init' to create a repository, 'git clone' to copy a repository, 'git add' to stage changes, 'git commit' to save changes, 'git push' to upload changes, and 'git pull' to download changes."
+    },
+    {
+        "question": "What is a Git branch?",
+        "answer": "A Git branch is a separate line of development in your project, allowing you to work on features, bug fixes, or experiments without affecting the main codebase."
+    },
+    {
+        "question": "What is the difference between 'git pull' and 'git fetch'?",
+        "answer": "'git pull' downloads changes from a remote repository and automatically merges them, while 'git fetch' only downloads changes without merging, giving you more control."
+    },
+    {
+        "question": "What is a merge conflict in Git?",
+        "answer": "A merge conflict occurs when changes from different branches or commits overlap, and Git cannot automatically resolve them. Manual intervention is required to fix conflicts."
+    },
+    {
+        "question": "Does Git have a database?",
+        "answer": "Yes, Git has an internal database that stores information about the project, including changes, versions, and metadata."
+    },
+    {
+        "question": "What is Git primarily used for?",
+        "answer": "Git is primarily used for version control, enabling developers to track changes, collaborate, and manage code effectively."
+    },
+    {
+        "question": "What is the difference between Git and GitHub?",
+        "answer": "Git is a version control system, while GitHub is a platform that hosts Git repositories, offering additional collaboration and project management tools."
+    },
+    {
+        "question": "What are the disadvantages of using Git?",
+        "answer": "Git can have a steep learning curve for beginners, and its powerful features can be overwhelming at first."
+    },
+    {
+        "question": "Do I need to install Git?",
+        "answer": "Yes, to use Git locally on your computer, you need to install it."
+    },
+    {
+        "question": "Why does everyone use Git?",
+        "answer": "Git is widely used because it is free, fast, reliable, and supports collaboration through branching and merging."
+    },
+    {
+        "question": "Who uses Git?",
+        "answer": "Git is used by developers, teams, and companies across various industries for managing software projects."
+    },
+    {
+        "question": "Is Git installed on my computer?",
+        "answer": "You can check if Git is installed by running the command 'git --version' in your terminal or command prompt."
+    },
+    {
+        "question": "How does GitHub make money?",
+        "answer": "GitHub makes money through premium features, private repositories, enterprise plans, and services like GitHub Actions."
+    },
+    {
+        "question": "What language is Git built on?",
+        "answer": "Git is built using the C programming language."
+    },
+    {
+        "question": "How many days does it take to learn Git?",
+        "answer": "You can learn the basics of Git in 1-2 days, but mastering it may take longer with practice."
+    },
+    {
+        "question": "Why is Git so popular?",
+        "answer": "Git is popular due to its speed, reliability, distributed nature, and strong community support."
+    },
+    {
+        "question": "Does Git require coding?",
+        "answer": "No, Git itself does not require coding, but it is commonly used alongside coding projects."
+    },
+    {
+        "question": "Why is Git so widely used?",
+        "answer": "Git is widely used because it simplifies collaboration, manages project history, and integrates well with tools like GitHub."
+    },
+    {
+        "question": "Is Git free to use?",
+        "answer": "Yes, Git is free and open-source software."
+    },
+    {
+        "question": "What is the most popular Git?",
+        "answer": "The most popular Git-based platform is GitHub, followed by GitLab and Bitbucket."
+    },
+    {
+        "question": "Is Git a useful skill?",
+        "answer": "Yes, Git is an essential skill for developers and anyone involved in software development."
+    },
+    {
+        "question": "When should I use Git?",
+        "answer": "You should use Git for managing code, collaborating on projects, and tracking changes."
+    },
+    {
+        "question": "Where is Git commonly used?",
+        "answer": "Git is commonly used in software development, DevOps, and project management."
+    },
+    {
+        "question": "How does Git actually work?",
+        "answer": "Git works by recording snapshots of a project over time, enabling users to track changes, revert to previous versions, and collaborate."
+    },
+    {
+        "question": "What is the purpose of the Git file?",
+        "answer": "The purpose of the .git folder is to store all metadata, changes, and history of a Git repository."
+    },
+    {
+        "question": "What is the point of Git?",
+        "answer": "The point of Git is to manage and track changes in projects, making collaboration and version control easier."
+    },
+    {
+        "question": "What is the best tool for Git?",
+        "answer": "Popular tools for Git include GitHub Desktop, SourceTree, and GitKraken."
+    },
+    {
+        "question": "What does Git stand for?",
+        "answer": "Git does not officially stand for anything, but it is often referred to as 'Global Information Tracker.'"
+    },
+    {
+        "question": "Are Git and GitHub the same?",
+        "answer": "No, Git is a version control system, while GitHub is a platform for hosting Git repositories."
+    },
+    {
+        "question": "What is Git for beginners?",
+        "answer": "For beginners, Git is a tool to track changes in files and collaborate on projects with others."
+    },
+    {
+        "question": "What is the basic function of Git?",
+        "answer": "The basic function of Git is to track changes, manage versions, and support collaboration."
+    },
+    {
+        "question": "What is Git slang for?",
+        "answer": "In slang, 'Git' is a British term meaning an unpleasant person, but in tech, it refers to the version control system."
+    },
+    {
+        "question": "What is a Git example?",
+        "answer": "An example of Git usage is tracking changes in a coding project and collaborating with teammates using commands like 'git commit' and 'git push.'"
+    },
+    {
+        "question": "Is Git owned by Microsoft?",
+        "answer": "No, Git is not owned by Microsoft. However, GitHub, a popular platform for Git, is owned by Microsoft."
+    },
+    {
+        "question": "How is Git different from other version control systems?",
+        "answer": "Git is distributed, meaning each user has a full copy of the repository, unlike centralized systems where a single server holds the repository."
+    },
+    {
+        "question": "Can I use Git without GitHub?",
+        "answer": "Yes, Git can be used locally without GitHub or any other hosting service. Hosting services are optional for remote collaboration."
+    },
+    {
+        "question": "What is Git rebase?",
+        "answer": "'git rebase' is a command that moves or combines a sequence of commits to a new base commit, allowing you to clean up your commit history."
+    },
+    {
+        "question": "What is a Git tag?",
+        "answer": "A Git tag is a marker for a specific point in the repository's history, often used to label release versions."
+    }
+]

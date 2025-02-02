@@ -1,0 +1,61 @@
+flutter build apk --target-platform android-arm64 --analyze-size
+
+this create json 
+
+No active package devtools.
+
+flutter pub global activate devtools
+
+
+For release
+ flutter build apk --release
+flutter build appbundle
+
+ flutter build appbundle --release
+
+
+flutter build appbundle --release --verbose
+
+
+
+dart devtools --appSizeBase=aab-code-size-analysis_01.json
+
+Genertaed keys :
+
+keytool -genkey -v -keystore ~/my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias my-key-alias
+
+
+AzQ9@x8A93xwiM#NoN7aq2Sqpe-4W_09
+
+[Storing /home/karthick/my-release-key.jks]
+
+
+
+
+storePassword=wwww@x8A93dsdsddasdwerwww
+keyPassword=AzQ9@x8A93xwid
+keyAlias=my-key-alias
+storeFile=android/my-release-key.jks
+
+
+
+
+
+
+
+flutter clean
+./gradlew clean
+flutter pub get
+./gradlew build
+
+
+
+
+Short Description
+"Learn and master Linux commands with interactive guides."
+
+Full Description
+"Master Linux commands with interactive lessons and practical examples. Perfect for beginners and Linux enthusiasts."
+
+
+Welcome to 'gitgo' – the perfect app to learn and master Linux commands! From basic to real-world DevOps commands, this app provides clear syntax, practical examples, and interactive lessons. Easily save, create, and access your favorite commands. Includes FAQs and beginner-friendly tips to build your command-line skills. Perfect for students, professionals, and Linux enthusiasts. Download now and boost your Linux expertise!"

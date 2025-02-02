@@ -1,0 +1,69 @@
+flutter build apk --target-platform android-arm64 --analyze-size
+
+this create json 
+
+No active package devtools.
+
+flutter pub global activate devtools
+
+
+For release
+ flutter build apk --release
+flutter build appbundle
+
+ flutter build appbundle --release
+
+
+flutter build appbundle --release --verbose
+
+
+
+dart devtools --appSizeBase=aab-code-size-analysis_01.json
+
+Genertaed keys :
+
+keytool -genkeypair -v -keystore ~/gitgo-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias gitgo-key-alias
+
+
+6DWYNGeM6y8JRQOdEEmD
+
+[Storing /home/karthick/gitgo-release-key.jks]
+
+
+
+
+storePassword=wwww@x8A93dsdsddasdwerwww
+keyPassword=6DWYNGeM6y8JRQOdEEmD
+keyAlias=gitgo-key-alias
+storeFile=android/gitgo-release-key.jks
+
+
+for logo 
+
+https://new.express.adobe.com/id/urn:aaid:sc:AP:e50711fe-dc59-4070-8f96-0867a1557221?category=text
+
+https://www.canva.com/design/DAGcyCm7pDQ/12lLNp14nWFppLnDFFJzOA/edit
+
+for image crop : https://www.iloveimg.com/
+
+
+
+
+
+
+flutter clean
+./gradlew clean
+flutter pub get
+./gradlew build
+
+
+
+
+Short Description
+
+Learn and master Git commands with interactive guides and examples.
+
+Full Description
+ 
+
+Welcome to 'GitGo' – the ultimate app to learn and master Git! Whether you're a beginner or a developer looking to enhance your version control skills, GitGuru has you covered. Dive into everything from basic Git commands to advanced workflows with clear syntax, step-by-step examples, and interactive lessons. Easily bookmark and organize your favorite commands for quick access. Discover FAQs, pro tips, and troubleshooting guides to navigate Git with confidence. Perfect for students, software engineers, and anyone working with code. Download now and take your Git expertise to the next level!

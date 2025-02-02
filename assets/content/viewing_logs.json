@@ -1,0 +1,143 @@
+[
+    {
+      "command": "git log",
+      "title": "View Commit History",
+      "description": "The 'git log' command shows the commit history of the repository.",
+      "syntax": "git log",
+      "example": "git log",
+      "story": "Jerry wants to review the history of changes made to the project. He uses 'git log' to see the commit history.",
+      "type": "basic",
+      "group": "viewing-logs",
+      "game": {
+        "hint": "Use 'git log' to see the commit history.",
+        "solution": "git log"
+      }
+    },
+    {
+      "command": "git log --oneline",
+      "title": "View Commit History in One Line",
+      "description": "The 'git log --oneline' command shows the commit history in a concise format.",
+      "syntax": "git log --oneline",
+      "example": "git log --oneline",
+      "story": "Tom wants a quick overview of the commit history. He uses 'git log --oneline' to see each commit in a single line.",
+      "type": "basic",
+      "group": "viewing-logs",
+      "game": {
+        "hint": "Use 'git log --oneline' to view the commit history in a compact format.",
+        "solution": "git log --oneline"
+      }
+    },
+    {
+      "command": "git log --graph",
+      "title": "View Commit History as a Graph",
+      "description": "The 'git log --graph' command shows a visual representation of the commit history.",
+      "syntax": "git log --graph",
+      "example": "git log --graph --oneline",
+      "story": "Jerry wants to understand the branching structure of the repository. He uses 'git log --graph' to visualize the commit history.",
+      "type": "intermediate",
+      "group": "viewing-logs",
+      "game": {
+        "hint": "Use 'git log --graph' to see a visual representation of commits.",
+        "solution": "git log --graph"
+      }
+    },
+    {
+      "command": "git log -p",
+      "title": "View Changes in Each Commit",
+      "description": "The 'git log -p' command shows the commit history along with the changes introduced in each commit.",
+      "syntax": "git log -p",
+      "example": "git log -p",
+      "story": "Tom wants to see the exact changes made in recent commits. He uses 'git log -p' to view the differences.",
+      "type": "intermediate",
+      "group": "viewing-logs",
+      "game": {
+        "hint": "Use 'git log -p' to view commit history with changes.",
+        "solution": "git log -p"
+      }
+    },
+    {
+      "command": "git log --author",
+      "title": "Filter Commits by Author",
+      "description": "The 'git log --author' command shows commits made by a specific author.",
+      "syntax": "git log --author='[author_name]'",
+      "example": "git log --author='Jerry'",
+      "story": "Jerry wants to see all the commits he made to the project. He uses 'git log --author' to filter the history.",
+      "type": "intermediate",
+      "group": "viewing-logs",
+      "game": {
+        "hint": "Use 'git log --author' to filter commits by a specific author.",
+        "solution": "git log --author='Jerry'"
+      }
+    },
+    {
+      "command": "git log --since",
+      "title": "Filter Commits by Date",
+      "description": "The 'git log --since' command shows commits made after a specific date.",
+      "syntax": "git log --since='[date]'",
+      "example": "git log --since='2024-01-01'",
+      "story": "Tom wants to review commits made after the start of the year. He uses 'git log --since' to filter the history.",
+      "type": "intermediate",
+      "group": "viewing-logs",
+      "game": {
+        "hint": "Use 'git log --since' followed by a date to filter commits.",
+        "solution": "git log --since='2024-01-01'"
+      }
+    },
+    {
+      "command": "git log --name-only",
+      "title": "View Files Changed in Commits",
+      "description": "The 'git log --name-only' command shows the list of files modified in each commit.",
+      "syntax": "git log --name-only",
+      "example": "git log --name-only",
+      "story": "Jerry wants to see which files were changed in the last few commits. He uses 'git log --name-only' to list them.",
+      "type": "intermediate",
+      "group": "viewing-logs",
+      "game": {
+        "hint": "Use 'git log --name-only' to see files modified in each commit.",
+        "solution": "git log --name-only"
+      }
+    },
+    {
+      "command": "git log --stat",
+      "title": "View Commit Statistics",
+      "description": "The 'git log --stat' command displays the commit history with statistics about changes made to files.",
+      "syntax": "git log --stat",
+      "example": "git log --stat",
+      "story": "Tom wants to see a summary of changes for each commit. He uses 'git log --stat' to get an overview.",
+      "type": "intermediate",
+      "group": "viewing-logs",
+      "game": {
+        "hint": "Use 'git log --stat' to view commit history with file change statistics.",
+        "solution": "git log --stat"
+      }
+    },
+    {
+      "command": "git shortlog",
+      "title": "Summarize Commit History",
+      "description": "The 'git shortlog' command provides a summary of commits grouped by author.",
+      "syntax": "git shortlog",
+      "example": "git shortlog",
+      "story": "Jerry wants a brief summary of contributions by author. He uses 'git shortlog' to see the commit history grouped by author.",
+      "type": "intermediate",
+      "group": "viewing-logs",
+      "game": {
+        "hint": "Use 'git shortlog' to summarize commits by author.",
+        "solution": "git shortlog"
+      }
+    },
+    {
+      "command": "git blame",
+      "title": "View Line-by-Line Changes",
+      "description": "The 'git blame' command shows the author and commit details for each line of a file.",
+      "syntax": "git blame [file]",
+      "example": "git blame file.txt",
+      "story": "Tom wants to find out who modified a specific line in 'file.txt'. He uses 'git blame' to track changes line by line.",
+      "type": "intermediate",
+      "group": "viewing-logs",
+      "game": {
+        "hint": "Use 'git blame' to see commit details for each line of a file.",
+        "solution": "git blame file.txt"
+      }
+    }
+  ]
+  

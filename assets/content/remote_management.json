@@ -1,0 +1,114 @@
+[
+  {
+    "command": "git clone",
+    "title": "Clone a Repository",
+    "description": "The 'git clone' command copies a remote repository to your local machine.",
+    "syntax": "git clone [repository_url]",
+    "example": "git clone https://github.com/user/project.git",
+    "story": "Tom wants to contribute to a project Jerry is working on. He uses 'git clone' to copy the repository to his computer.",
+    "type": "basic",
+    "group": "remote-management",
+    "game": {
+      "hint": "Use 'git clone' followed by the repository URL to copy it locally.",
+      "solution": "git clone https://github.com/user/project.git"
+    }
+  },
+  {
+    "command": "git remote add",
+    "title": "Add a Remote Repository",
+    "description": "The 'git remote add' command connects a local repository to a remote repository.",
+    "syntax": "git remote add [remote_name] [url]",
+    "example": "git remote add origin https://github.com/user/project.git",
+    "story": "Jerry wants to connect his local repository to a GitHub repository. He uses 'git remote add' to link them.",
+    "type": "basic",
+    "group": "remote-management",
+    "game": {
+      "hint": "Use 'git remote add' to connect a remote repository.",
+      "solution": "git remote add origin https://github.com/user/project.git"
+    }
+  },
+  {
+    "command": "git pull",
+    "title": "Pull Changes from Remote",
+    "description": "The 'git pull' command fetches and integrates changes from a remote repository.",
+    "syntax": "git pull [remote] [branch]",
+    "example": "git pull origin main",
+    "story": "Tom wants to get the latest updates from the remote repository. He uses 'git pull' to fetch and merge changes.",
+    "type": "basic",
+    "group": "remote-management",
+    "game": {
+      "hint": "Use 'git pull' followed by the remote name and branch to fetch updates.",
+      "solution": "git pull origin main"
+    }
+  },
+  {
+    "command": "git push",
+    "title": "Push Changes to Remote",
+    "description": "The 'git push' command uploads local changes to a remote repository.",
+    "syntax": "git push [remote] [branch]",
+    "example": "git push origin main",
+    "story": "Jerry wants to share his changes with the team. He uses 'git push' to upload them to the remote repository.",
+    "type": "basic",
+    "group": "remote-management",
+    "game": {
+      "hint": "Use 'git push' followed by the remote name and branch to upload changes.",
+      "solution": "git push origin main"
+    }
+  },
+  {
+    "command": "git fetch",
+    "title": "Fetch Updates from Remote",
+    "description": "The 'git fetch' command retrieves changes from a remote repository but does not merge them.",
+    "syntax": "git fetch [remote]",
+    "example": "git fetch origin",
+    "story": "Tom wants to check for updates from the remote repository without merging them. He uses 'git fetch'.",
+    "type": "basic",
+    "group": "remote-management",
+    "game": {
+      "hint": "Use 'git fetch' followed by the remote name to retrieve updates.",
+      "solution": "git fetch origin"
+    }
+  },
+  {
+    "command": "git remote -v",
+    "title": "View Remote Repositories",
+    "description": "The 'git remote -v' command shows the remote repositories associated with the local repository.",
+    "syntax": "git remote -v",
+    "example": "git remote -v",
+    "story": "Jerry wants to verify the remote repositories linked to his project. He uses 'git remote -v'.",
+    "type": "basic",
+    "group": "remote-management",
+    "game": {
+      "hint": "Run 'git remote -v' to view remote repositories.",
+      "solution": "git remote -v"
+    }
+  },
+  {
+    "command": "git push --set-upstream",
+    "title": "Track a Remote Branch",
+    "description": "The 'git push --set-upstream' command sets the current branch to track a remote branch.",
+    "syntax": "git push --set-upstream [remote] [branch_name]",
+    "example": "git push --set-upstream origin feature-login",
+    "story": "Jerry creates a new branch locally and wants to push it to the remote repository. He uses 'git push --set-upstream'.",
+    "type": "intermediate",
+    "group": "remote-management",
+    "game": {
+      "hint": "Use 'git push --set-upstream' to set a branch to track a remote branch.",
+      "solution": "git push --set-upstream origin feature-login"
+    }
+  },
+  {
+    "command": "git remote remove",
+    "title": "Remove a Remote Repository",
+    "description": "The 'git remote remove' command removes a connection to a remote repository.",
+    "syntax": "git remote remove [remote_name]",
+    "example": "git remote remove origin",
+    "story": "Jerry no longer needs the connection to a remote repository. He removes it using 'git remote remove'.",
+    "type": "intermediate",
+    "group": "remote-management",
+    "game": {
+      "hint": "Use 'git remote remove' to disconnect a remote repository.",
+      "solution": "git remote remove origin"
+    }
+  }
+]
