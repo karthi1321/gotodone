@@ -12,8 +12,9 @@ class Task {
   bool isFav;
   int? completedTime;
 
-  var priorityLevel; // Priority level for task (1-5)
-  Color? priorityFlag; // Priority flag color
+  // Separate flag for priority color and priority level
+  Color? priorityFlag; // Priority flag (color)
+  int? priorityLevel; // Priority level (1-5)
 
   Task({
     required this.id,
@@ -40,9 +41,9 @@ class Task {
         'has_subtask': hasSubtask,
         'has_attachment': hasAttachment,
         'is_fav': isFav,
-        'completed_time': completedTime, // Serialize the completed time
-        'priority_flag': priorityFlag?.value, // Serialize the priority flag color
-        'priority_level': priorityLevel, // Serialize the priority level
+        'completed_time': completedTime,
+        'priority_flag': priorityFlag?.value, // Serialize the color
+        'priority_level': priorityLevel, // Serialize the level
       };
 
   factory Task.fromJson(Map<String, dynamic> json) {
@@ -56,9 +57,9 @@ class Task {
       hasSubtask: json['has_subtask'],
       hasAttachment: json['has_attachment'],
       isFav: json['is_fav'],
-      completedTime: json['completed_time'], // Deserialize completed time
-      priorityFlag: json['priority_flag'] != null ? Color(json['priority_flag']) : null, // Deserialize priority flag
-      priorityLevel: json['priority_level'], // Deserialize priority level
+      completedTime: json['completed_time'],
+      priorityFlag: json['priority_flag'] != null ? Color(json['priority_flag']) : null,
+      priorityLevel: json['priority_level'],
     );
   }
 
