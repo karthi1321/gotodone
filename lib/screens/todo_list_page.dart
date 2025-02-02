@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gotodone/models/task_model.dart';
 import 'package:gotodone/screens/TaskDialog.dart';
 import 'package:gotodone/screens/task_card.dart';
 import 'package:gotodone/utils/task_manager.dart'; // Import TaskManager
-import 'package:flutter_svg/flutter_svg.dart';  // Import flutter_svg for SVG support
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TodoListPage extends StatefulWidget {
   @override
@@ -14,17 +15,32 @@ class _TodoListPageState extends State<TodoListPage> {
   List<Task> _tasks = [];
   String selectedLabel = "All";  // Default selected label
 
-  List<String> availableLabels = ["All", "Personal", "Wishlist", "Birthday", "Work", "Shopping", "Urgent", "Family", "Important"];
-
   @override
   void initState() {
     super.initState();
+    _loadSelectedLabel();  // Load saved label when the page is initialized
     _loadTasks();
   }
 
+  // Load the selected label from SharedPreferences
+  Future<void> _loadSelectedLabel() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String savedLabel = prefs.getString('selectedLabel') ?? "All";  // Default to "All" if no label is saved
+    setState(() {
+      selectedLabel = savedLabel;  // Update the selected label
+    });
+  }
+
+  // Save the selected label to SharedPreferences
+  Future<void> _saveSelectedLabel(String label) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('selectedLabel', label);  // Save the label to SharedPreferences
+  }
+
+  // Load tasks based on the selected label
   Future<void> _loadTasks() async {
     List<Task> tasks = await TaskManager.filterTasks(
-      status: 3,  // You can adjust this as per your requirements
+      status: 1, // You can adjust this as per your requirements
       label: selectedLabel == "All" ? null : selectedLabel,  // Filter tasks based on selected label
     );
     setState(() {
@@ -32,10 +48,12 @@ class _TodoListPageState extends State<TodoListPage> {
     });
   }
 
+  // Save tasks to the TaskManager (you can implement as needed)
   Future<void> _saveTasks() async {
     await TaskManager.saveTasks();
   }
 
+  // Add a new task
   void _addTask(String title, bool isFav) {
     if (title.isNotEmpty) {
       Task newTask = Task(
@@ -61,6 +79,7 @@ class _TodoListPageState extends State<TodoListPage> {
     }
   }
 
+  // Remove a task
   void _removeTask(int index) {
     TaskManager.removeTask(_tasks, index);
     setState(() {
@@ -68,6 +87,7 @@ class _TodoListPageState extends State<TodoListPage> {
     });
   }
 
+  // Mark a task as completed
   void _markTaskCompleted(int index) {
     TaskManager.markTaskCompleted(_tasks, index);
     setState(() {
@@ -76,6 +96,7 @@ class _TodoListPageState extends State<TodoListPage> {
     });
   }
 
+  // Show the add task dialog
   void _showAddTaskDialog() {
     TextEditingController taskController = TextEditingController();
     bool isFav = false;
@@ -93,51 +114,100 @@ class _TodoListPageState extends State<TodoListPage> {
     );
   }
 
-  // Function to change the selected label
-  void _changeLabel(String label) {
-    setState(() {
-      selectedLabel = label;
-      _loadTasks();  // Reload tasks when label is changed
-    });
+  // Show the label selection dialog
+  void _showLabelSelectionDialog() {
+    showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+      builder: (context) {
+        return Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
+            color: Colors.white,
+          ),
+          height: 300,
+          child: ListView(
+            children: [
+              ListTile(
+                title: Text("All", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+                onTap: () {
+                  setState(() {
+                    selectedLabel = "All";
+                    _loadTasks(); // Reload tasks with no label filter
+                  });
+                  _saveSelectedLabel("All"); // Save the selected label
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text("Personal", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+                onTap: () {
+                  setState(() {
+                    selectedLabel = "Personal";
+                    _loadTasks(); // Reload tasks with "Personal" label filter
+                  });
+                  _saveSelectedLabel("Personal"); // Save the selected label
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text("Wishlist", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+                onTap: () {
+                  setState(() {
+                    selectedLabel = "Wishlist";
+                    _loadTasks(); // Reload tasks with "Wishlist" label filter
+                  });
+                  _saveSelectedLabel("Wishlist"); // Save the selected label
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text("Birthday", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+                onTap: () {
+                  setState(() {
+                    selectedLabel = "Birthday";
+                    _loadTasks(); // Reload tasks with "Birthday" label filter
+                  });
+                  _saveSelectedLabel("Birthday"); // Save the selected label
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("To-Do List", style: TextStyle(fontWeight: FontWeight.bold)),
-        backgroundColor: Colors.blueAccent,
-        elevation: 0,
+        title: Text(
+          selectedLabel == "All" ? "Tasks" : "$selectedLabel Tasks",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: Theme.of(context).primaryColor,  // Using the theme's primary color
+        elevation: 5,
         actions: [
-          // Horizontal Scrollable Labels with better styling
-          Container(
-            margin: EdgeInsets.only(right: 8),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,  // Enable horizontal scrolling
-              child: Row(
-                children: availableLabels.map((label) {
-                  return GestureDetector(
-                    onTap: () => _changeLabel(label),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: Chip(
-                        label: Text(
-                          label,
-                          style: TextStyle(
-                            color: selectedLabel == label ? Colors.white : Colors.black,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        backgroundColor: selectedLabel == label ? Colors.blueAccent : Colors.grey[200],
-                        avatar: Icon(Icons.label, color: selectedLabel == label ? Colors.white : Colors.black),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        elevation: selectedLabel == label ? 4 : 0,
-                      ),
-                    ),
-                  );
-                }).toList(),
+          GestureDetector(
+            onTap: _showLabelSelectionDialog,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Chip(
+                label: Text(
+                  selectedLabel,
+                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+                backgroundColor: Theme.of(context).primaryColor,  // Using the theme's primary color
+                avatar: Icon(Icons.label, color: Colors.white),
               ),
             ),
           ),
@@ -155,21 +225,35 @@ class _TodoListPageState extends State<TodoListPage> {
               ),
             )
           : ListView.builder(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              itemCount: _tasks.length,
+               itemCount: _tasks.length,
               itemBuilder: (context, index) {
-                return TaskCard(
-                  task: _tasks[index],
-                  onComplete: () => _markTaskCompleted(index),
-                  onRemove: () => _removeTask(index),
-                  onSave: () {}, // Implement save logic if needed
+                return Container(
+                   // decoration: BoxDecoration(
+                  //   color: Colors.white,
+                  //   borderRadius: BorderRadius.circular(12.0),
+                  //   boxShadow: [
+                  //     BoxShadow(
+                  //       color: Colors.grey.withOpacity(0.2),
+                  //       spreadRadius: 1,
+                  //       blurRadius: 8,
+                  //       offset: Offset(0, 4), // Position of the shadow
+                  //     ),
+                  //   ],
+                  // ),
+                  child: TaskCard(
+                    task: _tasks[index],
+                    onComplete: () => _markTaskCompleted(index),
+                    onRemove: () => _removeTask(index),
+                    onSave: () {}, // Implement save logic if needed
+                  ),
                 );
               },
             ),
       floatingActionButton: FloatingActionButton(
         onPressed: _showAddTaskDialog,
-        child: Icon(Icons.add),
-        backgroundColor: Colors.blueAccent,
+        child: Icon(Icons.add, size: 30),
+        backgroundColor: Theme.of(context).primaryColor,  // Using the theme's primary color
+        elevation: 10,
       ),
     );
   }

@@ -59,47 +59,64 @@ class _TaskCardState extends State<TaskCard> {
   @override
   Widget build(BuildContext context) {
     return widget.task.status == 1 && !_isRemoved
-        ? Card(
-            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            elevation: 5,
-            shape: RoundedRectangleBorder(
+        ? Container(
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),  // Reduce vertical margin
+            decoration: BoxDecoration(
+              color: Colors.white,
               borderRadius: BorderRadius.circular(12.0),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.1),
+                  spreadRadius: 1,
+                  blurRadius: 6,  // Reduced blur radius for smaller shadow
+                  offset: Offset(0, 2),  // Adjusted shadow position
+                ),
+              ],
             ),
             child: InkWell(
               onTap: () {},
               borderRadius: BorderRadius.circular(12.0),
               child: Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 12.0),  // Reduced padding
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,  // Keep content centered
                   children: [
-                    TaskCompletionRadio(
-                      isCompleted: widget.task.status == 2,
-                      onTap: () {
-                        setState(() {
-                          widget.task.status = 2;
-                          _isRemoved = true;
-                          showImage = true; // Set the flag to true when completed
-                        });
-                        widget.onComplete();
-                        _showUndoSnackBar();
-                      },
+                    Padding(
+                      padding: const EdgeInsets.only(right: 12.0),  // Reduce space around radio button
+                      child: TaskCompletionRadio(
+                        isCompleted: widget.task.status == 2,
+                        onTap: () {
+                          setState(() {
+                            widget.task.status = 2;  // Mark as completed
+                            _isRemoved = true;
+                            showImage = true;  // Set the flag to true when completed
+                          });
+                          widget.onComplete();
+                          _showUndoSnackBar();
+                        },
+                      ),
                     ),
-                    TaskInfo(
-                      title: widget.task.title,
-                      label: widget.task.label,
+                    Expanded(
+                      child: TaskInfo(
+                        title: widget.task.title,
+                        label: widget.task.label,
+                      ),
                     ),
                     Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        FavoriteTaskButton(
-                          isFav: widget.task.isFav,
-                          onTap: () {
-                            setState(() {
-                              widget.task.isFav = !widget.task.isFav;
-                            });
-                            _saveFlagAndFavoriteStatus();
-                            widget.onSave();
-                          },
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 4.0),  // Reduce padding between buttons
+                          child: FavoriteTaskButton(
+                            isFav: widget.task.isFav,
+                            onTap: () {
+                              setState(() {
+                                widget.task.isFav = !widget.task.isFav;
+                              });
+                              _saveFlagAndFavoriteStatus();
+                              widget.onSave();
+                            },
+                          ),
                         ),
                         FlagColorSelector(
                           currentColor: priorityFlag,
