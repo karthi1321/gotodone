@@ -43,7 +43,10 @@ class TaskManager {
   // Add a task to the cache (and avoid duplicates)
   static Future<void> addTask(Task task) async {
     // Check if the task is already in the cache by its ID or title
-    bool taskExists = _taskCache.any((t) => t.id == task.id || t.title == task.title);
+    // bool taskExists = _taskCache.any((t) => t.id == task.id || t.title == task.title);
+
+        bool taskExists = _taskCache.any((t) => t.id == task.id );
+
     
     if (!taskExists) {
       // Add the task to the cache and save it to SharedPreferences
