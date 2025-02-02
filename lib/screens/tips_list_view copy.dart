@@ -1,5 +1,5 @@
-import 'package:gitgo/models/code_tip_model.dart';
-import 'package:gitgo/screens/tip_detail_page.dart';
+import 'package:gotodone/models/code_tip_model.dart';
+import 'package:gotodone/screens/tip_detail_page.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/tts_utils';

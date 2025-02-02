@@ -22,20 +22,20 @@ dart devtools --appSizeBase=aab-code-size-analysis_01.json
 
 Genertaed keys :
 
-keytool -genkeypair -v -keystore ~/gitgo-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias gitgo-key-alias
+keytool -genkeypair -v -keystore ~/gotodone-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias gotodone-key-alias
 
 
 6DWYNGeM6y8JRQOdEEmD
 
-[Storing /home/karthick/gitgo-release-key.jks]
+[Storing /home/karthick/gotodone-release-key.jks]
 
 
 
 
 storePassword=wwww@x8A93dsdsddasdwerwww
 keyPassword=6DWYNGeM6y8JRQOdEEmD
-keyAlias=gitgo-key-alias
-storeFile=android/gitgo-release-key.jks
+keyAlias=gotodone-key-alias
+storeFile=android/gotodone-release-key.jks
 
 
 for logo 
@@ -66,4 +66,4 @@ Learn and master Git commands with interactive guides and examples.
 Full Description
  
 
-Welcome to 'GitGo' – the ultimate app to learn and master Git! Whether you're a beginner or a developer looking to enhance your version control skills, GitGuru has you covered. Dive into everything from basic Git commands to advanced workflows with clear syntax, step-by-step examples, and interactive lessons. Easily bookmark and organize your favorite commands for quick access. Discover FAQs, pro tips, and troubleshooting guides to navigate Git with confidence. Perfect for students, software engineers, and anyone working with code. Download now and take your Git expertise to the next level!
+Welcome to 'gotodone' – the ultimate app to learn and master Git! Whether you're a beginner or a developer looking to enhance your version control skills, GitGuru has you covered. Dive into everything from basic Git commands to advanced workflows with clear syntax, step-by-step examples, and interactive lessons. Easily bookmark and organize your favorite commands for quick access. Discover FAQs, pro tips, and troubleshooting guides to navigate Git with confidence. Perfect for students, software engineers, and anyone working with code. Download now and take your Git expertise to the next level!

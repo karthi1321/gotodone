@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gitgo/screens/username_Input_page.dart';
+import 'package:gotodone/screens/username_Input_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:gitgo/screens/persistent_bottom_nav.dart';
+import 'package:gotodone/screens/persistent_bottom_nav.dart';
 
 class SplashScreen extends StatefulWidget {
   @override

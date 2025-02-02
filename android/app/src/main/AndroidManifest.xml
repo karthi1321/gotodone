@@ -1,11 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.gitgo">
+    package="com.gotodone">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:label="gitgo"
+        android:label="gotodone"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         tools:overrideLibrary="com.tundralabs.fluttertts">

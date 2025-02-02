@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:gitgo/constants/AppColors.dart';
-import 'package:gitgo/route/app_routes.dart';
-import 'package:gitgo/screens/CustomPageTransitionBuilder.dart';
-import 'package:gitgo/screens/SlidePageTransitionBuilder.dart';
-import 'package:gitgo/screens/SplashScreen.dart';
-import 'package:gitgo/utils/DataCache.dart';
+import 'package:gotodone/constants/AppColors.dart';
+import 'package:gotodone/route/app_routes.dart';
+import 'package:gotodone/screens/CustomPageTransitionBuilder.dart';
+import 'package:gotodone/screens/SlidePageTransitionBuilder.dart';
+import 'package:gotodone/screens/SplashScreen.dart';
+import 'package:gotodone/utils/DataCache.dart';
  
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Ensure bindings are initialized
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'gitgo',
+      title: 'gotodone',
       routes: AppRoutes.routes,
       theme: ThemeData(
         bottomNavigationBarTheme: BottomNavigationBarThemeData(

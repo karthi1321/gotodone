@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gitgo/constants/app_constants.dart';
+import 'package:gotodone/constants/app_constants.dart';
 
 // Define a map of titles to routes
 final routeMap = {

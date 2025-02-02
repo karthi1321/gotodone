@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gitgo/utils/DataCache.dart';
-import 'package:gitgo/utils/tts_utils';
+import 'package:gotodone/utils/DataCache.dart';
+import 'package:gotodone/utils/tts_utils';
  
 class SessionPage extends StatefulWidget {
   final String command;

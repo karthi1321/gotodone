@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gitgo/screens/roadmap_page.dart';
+import 'package:gotodone/screens/roadmap_page.dart';
 
 class AppConstants {
   static const String assetsPath = '/lib/assets';

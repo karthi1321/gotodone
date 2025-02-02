@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:gitgo/constants/app_constants.dart';
-import 'package:gitgo/screens/TextSpeechSettings.dart';
-import 'package:gitgo/screens/explain_page.dart';
-import 'package:gitgo/screens/explore_page.dart';
-import 'package:gitgo/screens/python_basic.dart';
-import 'package:gitgo/screens/python_list_view.dart';
-import 'package:gitgo/screens/roadmap_page.dart';
-import 'package:gitgo/screens/commands_list_page.dart';
+import 'package:gotodone/constants/app_constants.dart';
+import 'package:gotodone/screens/TextSpeechSettings.dart';
+import 'package:gotodone/screens/explain_page.dart';
+import 'package:gotodone/screens/explore_page.dart';
+import 'package:gotodone/screens/python_basic.dart';
+import 'package:gotodone/screens/python_list_view.dart';
+import 'package:gotodone/screens/roadmap_page.dart';
+import 'package:gotodone/screens/commands_list_page.dart';
 
 class AppRoutes {
   // Static routes for pages without dynamic arguments

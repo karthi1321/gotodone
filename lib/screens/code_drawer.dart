@@ -1,10 +1,10 @@
 import 'package:flutter/services.dart';
-import 'package:gitgo/constants/app_constants.dart';
-import 'package:gitgo/screens/commands_list_page.dart';
-import 'package:gitgo/screens/python_list_view.dart';
+import 'package:gotodone/constants/app_constants.dart';
+import 'package:gotodone/screens/commands_list_page.dart';
+import 'package:gotodone/screens/python_list_view.dart';
 import 'package:flutter/material.dart';
-import 'package:gitgo/screens/username_Input_page.dart';
-import 'package:gitgo/utils/shared_prefs_utils.dart';
+import 'package:gotodone/screens/username_Input_page.dart';
+import 'package:gotodone/utils/shared_prefs_utils.dart';
 import 'package:page_transition/page_transition.dart';
 import 'dart:math' as math;
 
@@ -17,7 +17,7 @@ class CodeDrawer extends StatefulWidget {
 
 class _CodeDrawerState extends State<CodeDrawer> {
   bool _showFeedbackDetails = false;
-  String userName = 'gitgo';
+  String userName = 'gotodone';
 
   @override
   void initState() {

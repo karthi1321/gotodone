@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:gitgo/constants/app_constants.dart';
+import 'package:gotodone/constants/app_constants.dart';
 
 class CourseGridSectionTitle extends StatelessWidget {
   final String title = 'Learn. Code. Master.';

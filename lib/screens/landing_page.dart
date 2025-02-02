@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:gitgo/utils/shared_prefs_utils.dart';
-import 'package:gitgo/screens/code_drawer.dart';
-import 'package:gitgo/screens/coursecardwithtitle.dart';
-import 'package:gitgo/screens/text_to_peech_widget.dart';
-import 'package:gitgo/widgets/custom_app_bar.dart';
+import 'package:gotodone/utils/shared_prefs_utils.dart';
+import 'package:gotodone/screens/code_drawer.dart';
+import 'package:gotodone/screens/coursecardwithtitle.dart';
+import 'package:gotodone/screens/text_to_peech_widget.dart';
+import 'package:gotodone/widgets/custom_app_bar.dart';
 import 'banner_session.dart';
 
 class LandingPage extends StatefulWidget {

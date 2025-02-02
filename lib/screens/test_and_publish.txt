@@ -58,4 +58,4 @@ Full Description
 "Master Linux commands with interactive lessons and practical examples. Perfect for beginners and Linux enthusiasts."
 
 
-Welcome to 'gitgo' – the perfect app to learn and master Linux commands! From basic to real-world DevOps commands, this app provides clear syntax, practical examples, and interactive lessons. Easily save, create, and access your favorite commands. Includes FAQs and beginner-friendly tips to build your command-line skills. Perfect for students, professionals, and Linux enthusiasts. Download now and boost your Linux expertise!"
+Welcome to 'gotodone' – the perfect app to learn and master Linux commands! From basic to real-world DevOps commands, this app provides clear syntax, practical examples, and interactive lessons. Easily save, create, and access your favorite commands. Includes FAQs and beginner-friendly tips to build your command-line skills. Perfect for students, professionals, and Linux enthusiasts. Download now and boost your Linux expertise!"

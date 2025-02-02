@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'package:gitgo/constants/app_constants.dart';
+import 'package:gotodone/constants/app_constants.dart';
 
 class DataCache {
   static final List<Map<String, dynamic>> _dataCache = [];

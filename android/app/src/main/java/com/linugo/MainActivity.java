@@ -1,4 +1,4 @@
-package com.gitgo;
+package com.gotodone;
 
 import io.flutter.embedding.android.FlutterActivity;
 

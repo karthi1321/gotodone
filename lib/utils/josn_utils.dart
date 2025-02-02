@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:gitgo/models/code_tip_model.dart';
+import 'package:gotodone/models/code_tip_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart' show rootBundle;
 

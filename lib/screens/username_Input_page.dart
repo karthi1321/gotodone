@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gitgo/screens/persistent_bottom_nav.dart';
-import 'package:gitgo/utils/shared_prefs_utils.dart';
+import 'package:gotodone/screens/persistent_bottom_nav.dart';
+import 'package:gotodone/utils/shared_prefs_utils.dart';
 import 'landing_page.dart';
 
 class UsernameInputPage extends StatefulWidget {

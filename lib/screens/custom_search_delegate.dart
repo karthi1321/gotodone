@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gitgo/screens/session_page.dart';
+import 'package:gotodone/screens/session_page.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   final List<dynamic> commands;

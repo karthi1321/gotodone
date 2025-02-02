@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gitgo/screens/session_page.dart';
-import 'package:gitgo/utils/DataCache.dart';
-import 'package:gitgo/utils/command_save_utils.dart';
-import 'package:gitgo/utils/command_utils.dart';
+import 'package:gotodone/screens/session_page.dart';
+import 'package:gotodone/utils/DataCache.dart';
+import 'package:gotodone/utils/command_save_utils.dart';
+import 'package:gotodone/utils/command_utils.dart';
 import 'commands_list_page.dart'; // Import CommandCard
 
 class CommandsSearchPage extends StatefulWidget {

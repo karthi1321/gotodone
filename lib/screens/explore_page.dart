@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gitgo/utils/shared_prefs_utils.dart';
+import 'package:gotodone/utils/shared_prefs_utils.dart';
 
 class ExplorePage extends StatefulWidget {
   const ExplorePage({super.key});

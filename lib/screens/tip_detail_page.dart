@@ -1,4 +1,4 @@
-import 'package:gitgo/models/code_tip_model.dart';
+import 'package:gotodone/models/code_tip_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

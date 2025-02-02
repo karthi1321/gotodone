@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:gitgo/screens/TextSpeechSettings.dart';
+import 'package:gotodone/screens/TextSpeechSettings.dart';
 
 import '../utils/tts_utils';
 

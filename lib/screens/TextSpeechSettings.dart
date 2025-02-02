@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:gitgo/utils/tts_utils';
+import 'package:gotodone/utils/tts_utils';
 
 class TextSpeechSettings extends StatefulWidget {
   @override

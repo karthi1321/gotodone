@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'package:gitgo/constants/AppColors.dart';
-import 'package:gitgo/models/code_tip_model.dart';
-import 'package:gitgo/screens/code_drawer.dart';
-import 'package:gitgo/screens/tips_list_view.dart';
-import 'package:gitgo/widgets/custom_app_bar.dart';
+import 'package:gotodone/constants/AppColors.dart';
+import 'package:gotodone/models/code_tip_model.dart';
+import 'package:gotodone/screens/code_drawer.dart';
+import 'package:gotodone/screens/tips_list_view.dart';
+import 'package:gotodone/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class PythonListView extends StatefulWidget {
